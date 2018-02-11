@@ -1,0 +1,20 @@
+{
+    "name": "vendor/miprimerphp",
+    "description": "Description of project miprimerphp.",
+    "authors": [
+        {
+            "name": "erasto",
+            "email": "your@email.here"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+             "": "src/"
+        }
+    },
+    "require": {
+        "twig/twig": "v2.4.4",
+        "guzzlehttp/guzzle": "6.3.0",
+        "firebase/php-jwt": "v5.0.0"
+    }
+}
