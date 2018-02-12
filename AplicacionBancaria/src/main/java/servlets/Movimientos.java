@@ -61,7 +61,7 @@ public class Movimientos extends HttpServlet {
                 }else{
                     //Cuenta inexistente
                     response.setStatus(500);
-                    response.getWriter().println("Cuenta no aparece en base de dapos");
+                    response.getWriter().println("Cuenta no aparece en base de datos");
                 }
             }else{
                 //Mal fomato cuenta
@@ -75,6 +75,8 @@ public class Movimientos extends HttpServlet {
             
         }else{
             //Cuenta sin movimientos entre las fechas especificadas
+            response.setStatus(500);
+            response.getWriter().println("Cuenta sin movimientos entre las fechas especificadas");
         }
     }
 

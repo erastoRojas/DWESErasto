@@ -47,13 +47,13 @@
             }
         </style>
     </head>
-    
+
     <body>
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
                     <h1>Movimientos</h1>
-                    <form id="formulario" action="http://localhost:8282/AplicacionBancaria/movimientos" onsubmit="return validarCliente();" method="post">
+                    <form id="formulario" onsubmit="return validarCliente();">
                         <div class="form-group">       
                             <label><b>nº Cuenta:</b></label>
                             <input type="text" id="n_cuenta" name="n_cuenta" class="form-control"/>
@@ -72,7 +72,7 @@
                             <span id="errorFecha" class="errorFecha">Las fechas no son correctas</span>
                             <span id="fecha2mal" class="fecha2mal">La fecha no puede ser posterior a la actual</span>
                         </div>
-                        <input type="submit" id="btnEnviar" name="btnEnviar" value="Enviar"/>
+                        <input type="button" id="botonListado" name="botonListado" value="Enviar"/>
                     </form>
                 </div>
                 <div class="col-sm-4"><br><br>
