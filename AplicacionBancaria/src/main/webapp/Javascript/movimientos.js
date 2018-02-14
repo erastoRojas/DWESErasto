@@ -68,26 +68,38 @@ $(document).ready(function(){//cuando el documento se cargue
 
 function funcion(){
     if(validarCliente()){//si el chequeo del cliente es correcto
-       alert("mandado al servidor");
+       
         $.ajax({
         type: 'POST',
         url: "http://localhost:8080/AplicacionBancaria/movimientos",
         data: $("#formulario").serialize(),
-        //datatype: 'json',
+        
         success: function(data){
-            // if (status != 500) {
-            var datos = JSON.parse(data);
-
-            $("#tabla").empty();        
-            $("#tabla").append("<tr><th>Fecha</th><th>Descripcion</th><th>Importe</th></tr>");
-            for(var i = 0;i<datos.length;i++){
-                //var fecha = formatofecha(datos[i].mo_fec);
-                $("#tabla").append('<tr><td>'+datos[i].mo_fec+'</td><td>'+datos[i].mo_des+'</td><td>'+datos[i].mo_imp+'</td></tr>');
-            }//}
-        }               
-    });
-    }
-}   
+            if (data.length > 2 ) {
+                var datos = JSON.parse(data);
+                
+                $("#tabla").empty();        
+                $("#tabla").append("<tr><th>Fecha</th><th>Descripcion</th><th>Importe</th></tr>");
+                for(var i = 0;i<datos.length;i++){
+                    
+                    $("#tabla").append('<tr><td>'+datos[i].mo_fec+'</td><td>'+datos[i].mo_des+'</td><td>'+datos[i].mo_imp+'</td></tr>');
+                }
+            }else{
+                
+                alert("mierda");
+                
+            }               
+        },
+        error: function(xhr)
+        {
+            var a = xhr.responseText;
+            
+            alert(a);
+          
+        }
+        });
+    } 
+}
      /*
     function funcion(){
         if(validarCliente()){//si el chequeo del cliente es correcto
