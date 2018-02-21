@@ -72,7 +72,7 @@ public class Movimientos extends HttpServlet {
             }else{
                 //Mal fomato cuenta
                 response.setStatus(500);
-                response.getWriter().println("mal formato de fechas");
+                response.getWriter().println("Mal formato de cuenta");
             }
         }else{
             

@@ -6,6 +6,9 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -79,5 +82,30 @@ public class MovimientosDAO {
             db.cerrarConexion(con);
         }
         return cuenta;
+    }
+
+    public int crearMovimientoDAO(Movimiento mo){
+        
+        DBConnection db = new DBConnection();
+        Connection con = null;
+        int filas = 0;
+        try {
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO MOVIMIENTOS (mo_ncu,mo_fec,mo_hor,mo_des,mo_imp) "
+                                                        + "VALUES(?,?,?)");                                       
+            stmt.setString(1, mo.getMo_ncu());
+            stmt.setDate(2, new java.sql.Date(mo.getMo_fec().getTime()));
+            stmt.setString(3, mo.getMo_hor());
+            stmt.setString(4, mo.getMo_des());
+            stmt.setInt(5,mo.getMo_imp());
+            
+            filas = stmt.executeUpdate();
+            
+        } catch (Exception ex) {
+            Logger.getLogger(MovimientosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.cerrarConexion(con);
+        }
+        return filas;  
     }
 }

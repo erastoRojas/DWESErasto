@@ -6,12 +6,14 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Cliente;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 /**
@@ -40,6 +42,48 @@ public class ClientesDAO {
         }
         return lista;
 
+    }
+    
+    public Cliente getClienteDAO(Cliente cl) {
+        Cliente cliente = null;
+        DBConnection db = new DBConnection();
+        Connection con = null;
+        try {
+            con = db.getConnection();
+            QueryRunner qr = new QueryRunner();
+            ResultSetHandler<Cliente> h = new BeanHandler<>(Cliente.class);
+            cliente = qr.query(con, "SELECT * FROM CLIENTES "
+                                  + "WHERE cl_dni = ?", h,cl.getCl_dni());
+
+        } catch (Exception ex){
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.cerrarConexion(con);
+        }
+        return cliente;
+    }
+    
+
+    public int updateClienteDAO(Cliente cl){
+        DBConnection db = new DBConnection();
+        Connection con = null;
+        int filas = 0;
+        try {
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement("UPDATE CLIENTES SET cl_sal = ?"
+                                                        + "WHERE cl_dni = ?");
+ 
+            stmt.setInt(1, cl.getCl_sal());
+            stmt.setString(2, cl.getCl_dni());
+            
+            filas = stmt.executeUpdate();
+
+        } catch (Exception ex) {
+            Logger.getLogger(CuentasDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.cerrarConexion(con);
+        }
+        return filas;
     }
     
 }
