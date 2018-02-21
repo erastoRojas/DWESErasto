@@ -5,11 +5,19 @@
  */
 package servicios;
 
+import dao.IngresosYReintegrosDAO;
+import model.Cuenta;
+
 /**
  *
  * @author erasto
  */
 public class IngresosYReintegrosServicios
 {
+
+    public Cuenta getCuenta(Cuenta cu) {
+        IngresosYReintegrosDAO dao = new IngresosYReintegrosDAO();
+        return dao.getCuentaDAO(cu);
+    }
     
 }

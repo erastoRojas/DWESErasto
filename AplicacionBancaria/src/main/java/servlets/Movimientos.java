@@ -58,6 +58,12 @@ public class Movimientos extends HttpServlet {
                         Logger.getLogger(Movimientos.class.getName()).log(Level.SEVERE, null, ex);
                     }
                         lista = ms.getMovimientos(mo,fecha_inicio,fecha_fin);
+                        
+                        if(lista.isEmpty()){
+                            //Cuenta sin movimientos entre las fechas especificadas
+                            response.setStatus(500);
+                            response.getWriter().println("Cuenta sin movimientos entre las fechas especificadas");
+                        }
                 }else{
                     //Cuenta inexistente
                     response.setStatus(500);
@@ -68,15 +74,13 @@ public class Movimientos extends HttpServlet {
                 response.setStatus(500);
                 response.getWriter().println("mal formato de fechas");
             }
+        }else{
+            
         }
         if(lista != null){ 
             String json = new Gson().toJson(lista);
             response.getWriter().print(json);
             
-        }else{
-            //Cuenta sin movimientos entre las fechas especificadas
-            //response.setStatus(500);
-            //response.getWriter().println("Cuenta sin movimientos entre las fechas especificadas");
         }
     }
 

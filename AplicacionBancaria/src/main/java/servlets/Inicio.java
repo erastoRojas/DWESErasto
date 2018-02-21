@@ -17,22 +17,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author erasto
  */
-@WebServlet(name = "Inicio", urlPatterns =
-{
-    "/Inicio"
-})
+@WebServlet(name = "Inicio", urlPatterns = {"/Inicio"})
 public class Inicio extends HttpServlet
 {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {

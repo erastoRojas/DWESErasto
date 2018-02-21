@@ -75,7 +75,7 @@ function funcion(){
         data: $("#formulario").serialize(),
         
         success: function(data){
-            if (data.length > 2 ) {
+            
                 var datos = JSON.parse(data);
                 
                 $("#tabla").empty();        
@@ -83,19 +83,12 @@ function funcion(){
                 for(var i = 0;i<datos.length;i++){
                     
                     $("#tabla").append('<tr><td>'+datos[i].mo_fec+'</td><td>'+datos[i].mo_des+'</td><td>'+datos[i].mo_imp+'</td></tr>');
-                }
-            }else{
-                
-                alert("mierda");
-                
-            }               
+                }               
         },
         error: function(xhr)
         {
-            var a = xhr.responseText;
-            
-            alert(a);
-          
+            $("#tabla").empty();
+           // alert(xhr.responseText);
         }
         });
     } 

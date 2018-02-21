@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Movimiento {
 
-   private String mo_ncu;
+    private String mo_ncu;
     private Date mo_fec;
     private String mo_hor;
     private String mo_des;

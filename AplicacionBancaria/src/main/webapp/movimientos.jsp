@@ -45,6 +45,9 @@
                 display: none;
                 color: red; 
             }
+            .errorServlet{
+                color: red;
+            }
         </style>
     </head>
 
@@ -78,6 +81,7 @@
                 <div class="col-sm-4"><br><br>
                     <table class="table table-striped" id="tabla"> 
                     </table>
+                    <span id="errorServlet"></span>
                 </div>    
             </div>
         </div> 
