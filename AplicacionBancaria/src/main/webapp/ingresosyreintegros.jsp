@@ -26,6 +26,14 @@
                 display: none;
                 color: red;
             }
+            .errorTexto{
+                display: none;
+                color: red;
+            }
+            .errorRadio{
+                display: none;
+                color: red;
+            }
         </style>
         
     </head>
@@ -35,29 +43,34 @@
             <div class="row">
                 <div class="col-sm-6">
                     <h1>Ingresos y Reintegros</h1>
-                    <form id="datos" onsubmit="return validarCliente();">
+                    <form id="formulario" onsubmit="return validarCliente();">
                         <p>Elige una opción:</p>
                         <div class="radio">
-                          <label><input type="radio" name="optradio" id="ingreso" class="ingreso" required>Ingreso</label>
+                          <label><input type="radio" name="op" value="INGRESO" id="ingreso" class="ingreso">Ingreso</label>
                         </div>
                         <div class="radio">
-                          <label><input type="radio" name="optradio" id="reintegro" class="reintegro">Reintegro</label>
+                          <label><input type="radio" name="op" value="REINTEGRO" id="reintegro" class="reintegro">Reintegro</label>
                         </div>
+                        <span id="errorRadio" class="errorTexto">Debe seleccionar una opción</span>
                         <div class="form-group">       
                             <label><b>nº Cuenta:</b></label>
                             <input type="text" id="n_cuenta" name="n_cuenta" class="form-control"/>
                             <span id="errorCuenta" class="errorFormulario">El numero de cuenta no es correcto</span>
                         </div>
+                        <div class="form-group">       
+                            <label><b>Importe:</b></label>
+                            <input type="text" id="importe" name="importe" class="form-control"/>
+                        </div>
                         <div class="form-group">
                             <label for="comment">Descripción:</label>
-                            <textarea class="form-control" rows="5" id="descripcion"></textarea>
+                            <textarea class="form-control" rows="5" id="descripcion" name="descripcion" required></textarea>
+                            <span id="errorTexto" class="errorTexto">Debe añadir una descripción</span>
                         </div>
                         <input type="button" id="botonListado" value="Buscar"/>
                     </form>
                 </div>
                 <div class="col-sm-6"><br><br>
-                    <table class="table table-striped" id="tabla"> 
-                    </table>
+                    <p id="respuesta"></p>
                 </div>    
             </div>
         </div> 

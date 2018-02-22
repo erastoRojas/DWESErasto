@@ -28,6 +28,7 @@ public class Movimientos extends HttpServlet {
         
         MovimientosServicios ms = new MovimientosServicios();
         List<Movimiento> lista = null;
+        boolean bole = true;
         
         String n_cuenta = request.getParameter("n_cuenta");
 
@@ -63,6 +64,7 @@ public class Movimientos extends HttpServlet {
                             //Cuenta sin movimientos entre las fechas especificadas
                             response.setStatus(500);
                             response.getWriter().println("Cuenta sin movimientos entre las fechas especificadas");
+                            bole = false;
                         }
                 }else{
                     //Cuenta inexistente
@@ -77,7 +79,7 @@ public class Movimientos extends HttpServlet {
         }else{
             
         }
-        if(lista != null){ 
+        if(lista != null && bole == true){ 
             String json = new Gson().toJson(lista);
             response.getWriter().print(json);
             

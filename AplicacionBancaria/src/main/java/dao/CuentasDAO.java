@@ -46,7 +46,7 @@ public class CuentasDAO
         int filas = 0;
         try {
             con = db.getConnection();
-            PreparedStatement stmt = con.prepareStatement("UPDATE CUENTAS SET cu_sal = ?"
+            PreparedStatement stmt = con.prepareStatement("UPDATE CUENTAS SET cu_sal = ? "
                                                         + "WHERE cu_ncu = ?");
  
             stmt.setInt(1, cu.getCu_sal());

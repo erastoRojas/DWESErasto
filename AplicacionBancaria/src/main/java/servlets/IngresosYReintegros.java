@@ -6,6 +6,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +19,7 @@ import model.Movimiento;
 import servicios.IngresosYReintegrosServicios;
 
 import java.time.*;
+import java.util.Date;
 import model.Cliente;
 
 /**
@@ -30,6 +33,7 @@ public class IngresosYReintegros extends HttpServlet {
             throws ServletException, IOException {
     
         IngresosYReintegrosServicios ir = new IngresosYReintegrosServicios();
+        boolean bole = true;
         
         String n_cuenta = request.getParameter("n_cuenta");
 
@@ -53,25 +57,27 @@ public class IngresosYReintegros extends HttpServlet {
                                 
                                 int importe = Integer.parseInt(request.getParameter("importe"));
                                 String descripcion = request.getParameter("descripcion");
-                                String dni = request.getParameter("dni");
-                                /*
-                                LocalDateTime fechaYHora = LocalDateTime.now();
+                                String dni = "11111111A";//request.getParameter("dni");
                                 
-                                int hora = fechaYHora.getHour();
-                                hora += fechaYHora.getMinute();
-                                hora += fechaYHora.getSecond();
-                                */
+                                Date date = new Date();
+                                
+                                DateFormat horas = new SimpleDateFormat("HH:mm:ss");
+                                String hora = horas.format(date);
+                                hora = horas(request,hora);
+                                             
                                 Movimiento mo = new Movimiento();
                                 
                                 mo.setMo_ncu(n_cuenta);
                                 mo.setMo_imp(importe);
                                 mo.setMo_des(descripcion);
-                                //mo.setMo_fec(dateFormat);
-                                //mo.setMo_hor(hourFormat);
+                                mo.setMo_fec(date);
+                                mo.setMo_hor(hora);
                                 
                                 filas = ir.crearMovimiento(mo);//crea movimiento
-                                if(filas <= 0){
+                                
+                                if(filas == 0){
                                     //Error al insertar el movimiento
+                                    bole = false;
                                     response.setStatus(500);
                                     response.getWriter().println("Error al insertar el movimiento en la tabla movimientos");
                                     break;
@@ -79,8 +85,9 @@ public class IngresosYReintegros extends HttpServlet {
                                 
                                 cu.setCu_sal(importe + cu.getCu_sal());
                                 filas = ir.updateCuenta(cu);//modifica saldo tabla cuentas
-                                if(filas <= 0){
+                                if(filas == 0){
                                     //Error al actualizar el saldo
+                                    bole = false;
                                     response.setStatus(500);
                                     response.getWriter().println("Error al actualizar el saldo en la tabla cuentas");
                                     break;
@@ -94,8 +101,13 @@ public class IngresosYReintegros extends HttpServlet {
                                 filas = ir.updateCliente(cl);
                                 if(filas <= 0){
                                     //Error al modificar el saldo en cliente
+                                    bole = false;
                                     response.setStatus(500);
                                     response.getWriter().println("Error al actualizar el saldo en la tabla clientes");
+                                }
+                                
+                                if(bole == true){
+                                    response.getWriter().println("Ingreso realizado correctamente!!!!");
                                 }
                                 
                                 break;
@@ -104,24 +116,30 @@ public class IngresosYReintegros extends HttpServlet {
                                 break;
                         }
                     }else{
-                       //error
+                    //error
+                    bole = false;
                     response.setStatus(500);
                     response.getWriter().println("error"); 
                     }
                 }else{
                     //Cuenta inexistente
+                    bole = false;
                     response.setStatus(500);
                     response.getWriter().println("Cuenta no aparece en base de datos");
                 }
             }else{
                 //Mal fomato cuenta
+                bole = false;
                 response.setStatus(500);
                 response.getWriter().println("Mal formato de cuenta");
             }
-            //request.setAttribute("clientes", cs.getAllClientes());
-            request.getRequestDispatcher("ingresosyreintegros.jsp").forward(request, response);
-        }else{
+
+        }
+        
+        
+        if(n_cuenta == null){
             //manda a pagina de inicio
+            request.getRequestDispatcher("ingresosyreintegros.jsp").forward(request, response);
         }
             
     }
@@ -187,5 +205,17 @@ public class IngresosYReintegros extends HttpServlet {
             bole = false;
         }   
         return bole;
+    }
+    
+    public String horas(HttpServletRequest request,String horas){
+        
+        String aux = "";
+                                
+        for(int i = 0; i < horas.length(); i++){
+            if(horas.charAt(i) != ':'){
+                aux += horas.charAt(i);
+            }
+        }
+        return aux;
     }
 }

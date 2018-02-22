@@ -92,7 +92,7 @@ public class MovimientosDAO {
         try {
             con = db.getConnection();
             PreparedStatement stmt = con.prepareStatement("INSERT INTO MOVIMIENTOS (mo_ncu,mo_fec,mo_hor,mo_des,mo_imp) "
-                                                        + "VALUES(?,?,?)");                                       
+                                                        + "VALUES(?,?,?,?,?)");                                       
             stmt.setString(1, mo.getMo_ncu());
             stmt.setDate(2, new java.sql.Date(mo.getMo_fec().getTime()));
             stmt.setString(3, mo.getMo_hor());

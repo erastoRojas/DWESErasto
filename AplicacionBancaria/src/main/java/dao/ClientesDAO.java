@@ -70,7 +70,7 @@ public class ClientesDAO {
         int filas = 0;
         try {
             con = db.getConnection();
-            PreparedStatement stmt = con.prepareStatement("UPDATE CLIENTES SET cl_sal = ?"
+            PreparedStatement stmt = con.prepareStatement("UPDATE CLIENTES SET cl_sal = ? "
                                                         + "WHERE cl_dni = ?");
  
             stmt.setInt(1, cl.getCl_sal());

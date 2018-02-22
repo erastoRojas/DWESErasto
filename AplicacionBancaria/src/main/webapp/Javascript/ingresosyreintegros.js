@@ -1,6 +1,7 @@
 function validarCliente(){
     var n_cuenta = document.getElementById("n_cuenta").value;
-                
+    var text_area = document.getElementById("descripcion").value;
+    
     var reg = new RegExp("^[0-9]{10}$");
     var error = false;
     var sub = n_cuenta.substr(9,1);//recoge el ultimo dígito              
@@ -21,6 +22,16 @@ function validarCliente(){
         error = true;
     }
     
+    if(text_area == ''){//comprueba que haya una descripcion seleccionada
+        document.getElementById("errorTexto").style.display = "block";
+        error = true;
+    }else{document.getElementById("errorTexto").style.display = "none";}
+    
+    if(document.getElementById("ingreso").checked == false && document.getElementById("reintegro").checked == false){
+        document.getElementById("errorRadio").style.display = "block";
+        error = true;
+    }else{document.getElementById("errorRadio").style.display = "none";}
+    
     if(error == true){
        return false;
     }else{return true;}             
@@ -39,26 +50,24 @@ $(document).ready(function(){//cuando el documento se cargue
 })   
     function funcion(){
         if(validarCliente()){//si el chequeo del cliente es correcto
-            alert("mandado al servidor");
-            /*
-            $.post("",$("#datos").serialize(),//manda datos 
-                function(data,status){
-                    var datos = JSON.parse(data);
-                    
-                    //trabajo con los datos
-                    
-                    $("#tabla").empty();
-                    
-                    //excepciones
-                   
-                    $("#tabla").append("<tr><th>Fecha</th><th>Descripcion</th><th>Importe</th></tr>")
-                    for(var i = 0;i<datos.length;i++){
-                        //var fecha = formatofecha(datos[i].mo_fec);
-                        $("#tabla").append('<tr><td>'+datos[i].mo_fec+'</td><td>'+datos[i].mo_des+'</td><td>'+datos[i].mo_imp+'</td></tr>')
-                    }
-                });*/
-        }
-    }
-     
+            
+            $.ajax({
+            type: 'POST',
+            url: "http://localhost:8282/AplicacionBancaria/ingresosYReintegros",
+            data: $("#formulario").serialize(),
+
+            success: function(data){
+
+                    document.getElementById("respuesta").innerHTML = data;           
+            },
+            error: function(xhr)
+            {
+                document.getElementById("respuesta").style.display = "block";
+                document.getElementById("respuesta").style.color = "red";
+                document.getElementById("respuesta").innerHTML = xhr.responseText;
+            }
+            });
+    } 
+}
 
 
