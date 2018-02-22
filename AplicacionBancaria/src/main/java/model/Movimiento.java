@@ -18,6 +18,17 @@ public class Movimiento {
     private String mo_hor;
     private String mo_des;
     private int mo_imp;
+    private int mo_sal;
+
+    public int getMo_sal()
+    {
+        return mo_sal;
+    }
+
+    public void setMo_sal(int mo_sal)
+    {
+        this.mo_sal = mo_sal;
+    }
 
     public String getMo_ncu()
     {

@@ -91,13 +91,14 @@ public class MovimientosDAO {
         int filas = 0;
         try {
             con = db.getConnection();
-            PreparedStatement stmt = con.prepareStatement("INSERT INTO MOVIMIENTOS (mo_ncu,mo_fec,mo_hor,mo_des,mo_imp) "
-                                                        + "VALUES(?,?,?,?,?)");                                       
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO MOVIMIENTOS (mo_ncu,mo_fec,mo_hor,mo_des,mo_imp,mo_sal) "
+                                                        + "VALUES(?,?,?,?,?,?)");                                       
             stmt.setString(1, mo.getMo_ncu());
             stmt.setDate(2, new java.sql.Date(mo.getMo_fec().getTime()));
             stmt.setString(3, mo.getMo_hor());
             stmt.setString(4, mo.getMo_des());
             stmt.setInt(5,mo.getMo_imp());
+            stmt.setInt(6,mo.getMo_sal());
             
             filas = stmt.executeUpdate();
             

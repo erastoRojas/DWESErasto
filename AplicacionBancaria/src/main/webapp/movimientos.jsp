@@ -78,7 +78,7 @@
                         <input type="button" id="botonListado" name="botonListado" value="Enviar"/>
                     </form>
                 </div>
-                <div class="col-sm-4"><br><br>
+                <div class="col-sm-8"><br><br>
                     <table class="table table-striped" id="tabla"> 
                     </table>
                     <span id="errorServlet"></span>

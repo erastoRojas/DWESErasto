@@ -43,4 +43,9 @@ public class IngresosYReintegrosServicios
         ClientesDAO dao = new ClientesDAO();
         return dao.updateClienteDAO(cl);
     }
+
+    public Cuenta getSaldo(Cuenta cu){
+        CuentasDAO dao = new CuentasDAO();
+        return dao.getSaldoDAO(cu);
+    }
 }

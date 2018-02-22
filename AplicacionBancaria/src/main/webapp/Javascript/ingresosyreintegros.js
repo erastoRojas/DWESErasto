@@ -51,14 +51,19 @@ $(document).ready(function(){//cuando el documento se cargue
     function funcion(){
         if(validarCliente()){//si el chequeo del cliente es correcto
             
+            var continuar = confirm ("desea continuar?");
+            
+            if(continuar){
+            
             $.ajax({
             type: 'POST',
             url: "http://localhost:8282/AplicacionBancaria/ingresosYReintegros",
             data: $("#formulario").serialize(),
 
             success: function(data){
-
-                    document.getElementById("respuesta").innerHTML = data;           
+                    
+                document.getElementById("respuesta").style.color = "blue";
+                document.getElementById("respuesta").innerHTML = data;           
             },
             error: function(xhr)
             {
@@ -68,6 +73,6 @@ $(document).ready(function(){//cuando el documento se cargue
             }
             });
     } 
-}
+}}
 
 

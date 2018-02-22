@@ -77,13 +77,37 @@ function funcion(){
         success: function(data){
             
                 var datos = JSON.parse(data);
+                var cont2 = 0;
                 
                 $("#tabla").empty();
                 document.getElementById("errorServlet").style.display = "none";
-                $("#tabla").append("<tr><th>Fecha</th><th>Descripcion</th><th>Importe</th></tr>");
+                $("#tabla").append("<tr><th>Fecha</th><th>Hora</th><th>Descripcion</th><th>Importe</th><th>Saldo</th></tr>");
+                
                 for(var i = 0;i<datos.length;i++){
                     
-                    $("#tabla").append('<tr><td>'+datos[i].mo_fec+'</td><td>'+datos[i].mo_des+'</td><td>'+datos[i].mo_imp+"€"+'</td></tr>');
+                    var cont = 0;
+                    var hora = "";
+                    
+                    for(var j = 0; j < datos[i].mo_hor.length; j++){
+                        if(cont == 2){
+                            hora += ":"+datos[i].mo_hor.charAt(j);
+                            cont = 0;
+                        }else{
+                            hora += datos[i].mo_hor.charAt(j);
+                        }
+                        cont++;
+                    }
+                
+                    $("#tabla").append('<tr><td>'+datos[i].mo_fec+'</td><td>'+hora+'</td><td>'+datos[i].mo_des+'</td><td id="'+cont2+'">'+datos[i].mo_imp+"€"+'</td><td>'+datos[i].mo_sal+"€"+'</td></tr>');
+                    
+                    var cuenta = cont2+'';
+                    if(datos[i].mo_imp <0){
+                        
+                        document.getElementById(cuenta).style.color = "red";
+                    }else{
+                        document.getElementById(cuenta).style.color = "blue";
+                    }cont2++;
+                    
                 }               
         },
         error: function(xhr)

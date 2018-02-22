@@ -40,6 +40,25 @@ public class CuentasDAO
         return cuenta;
     }
     
+    public Cuenta getSaldoDAO(Cuenta cu){
+        Cuenta cuenta = null;
+        DBConnection db = new DBConnection();
+        Connection con = null;
+        try {
+            con = db.getConnection();
+            QueryRunner qr = new QueryRunner();
+            ResultSetHandler<Cuenta> h = new BeanHandler<>(Cuenta.class);
+            cuenta = qr.query(con, "SELECT * FROM CUENTAS "
+                                 + "WHERE cu_sal = ?", h,cu.getCu_sal());
+
+        } catch (Exception ex){
+            Logger.getLogger(CuentasDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.cerrarConexion(con);
+        }
+        return cuenta;
+    }
+    
     public int updateCuentaDAO(Cuenta cu){
         DBConnection db = new DBConnection();
         Connection con = null;
