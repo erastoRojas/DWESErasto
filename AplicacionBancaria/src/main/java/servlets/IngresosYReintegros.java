@@ -92,7 +92,6 @@ public class IngresosYReintegros extends HttpServlet {
                                     response.getWriter().println("Error al actualizar el saldo en la tabla clientes");
                                     break;
                                 }
-                                
                                 //crea movimiento
                                 mo.setMo_ncu(n_cuenta);
                                 mo.setMo_imp(importe);

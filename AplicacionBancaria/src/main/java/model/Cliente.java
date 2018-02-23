@@ -22,6 +22,15 @@ public class Cliente {
     private Date cl_fcl;
     private int cl_ncu;
     private int cl_sal;
+    private String pass;
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
 
     public String getCl_dni() {
         return cl_dni;
