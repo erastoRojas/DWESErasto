@@ -27,7 +27,7 @@ public class Alumnos extends HttpServlet {
 
         AlumnosServicios as = new AlumnosServicios();
         String op = request.getParameter("op");
-        int filas;
+        String cadenaFilas;
         if (op != null){    
             switch (op) {
                 case "GETALL":
@@ -36,30 +36,21 @@ public class Alumnos extends HttpServlet {
                     break;
                     
                 case "INSERT":
-                    filas = as.addAlumno(modificarAlumno(request));
-                    if(filas != 0){
-                        request.setAttribute("mensaje", "se ha insertado "+filas+" alumnos");
-                    }else{
-                        request.setAttribute("mensaje", "No se ha podido insertar el alumno");
-                    }
+                    
+                    //response.getWriter().write(as.addAlumno(a));
+                    cadenaFilas = as.addAlumno(modificarAlumno(request));
+                    request.setAttribute("mensaje",cadenaFilas);
                     break;
                     
                 case "UPDATE":
-                    filas = as.updateAlumno(modificarAlumno(request));
-                    if(filas != 0){
-                        request.setAttribute("mensaje", "Se ha modificado "+filas+" alumnos");
-                    }else{
-                        request.setAttribute("mensaje", "No se ha podido actualizar el alumno");
-                    }
+                    cadenaFilas = as.updateAlumno(modificarAlumno(request));
+                    request.setAttribute("mensaje", cadenaFilas);
+                   
                     break;
                     
                 case "DELETE":
-                    filas = as.deleteAlumno(modificarAlumno(request));
-                    if(filas != 0){
-                    request.setAttribute("mensaje", "Se ha borrado "+filas+" alumnos");
-                    }else{
-                        request.setAttribute("mensaje", "No se ha podido borrar el alumno");
-                    }
+                    cadenaFilas = as.deleteAlumno(modificarAlumno(request));
+                    request.setAttribute("mensaje", cadenaFilas);
                     break;
             }
         }

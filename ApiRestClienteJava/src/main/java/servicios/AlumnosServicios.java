@@ -16,17 +16,17 @@ public class AlumnosServicios {
         AlumnosDAO dao = new AlumnosDAO();
         return dao.getAllAlumnosJDBC();
     }
-    public int addAlumno(Alumno alumnoNuevo) throws IOException{
+    public String addAlumno(Alumno alumnoNuevo) throws IOException{
 
         AlumnosDAO dao = new AlumnosDAO();
         return dao.insertAlumnoJDBC(alumnoNuevo);
     }
-    public int updateAlumno(Alumno alumnoNuevo){
+    public String updateAlumno(Alumno alumnoNuevo) throws IOException{
 
         AlumnosDAO dao = new AlumnosDAO();
         return dao.updateAlumnoJDBC(alumnoNuevo);
     }
-    public int deleteAlumno(Alumno alumnoNuevo){
+    public String deleteAlumno(Alumno alumnoNuevo) throws IOException{
 
         AlumnosDAO dao = new AlumnosDAO();
         return dao.deleteAlumnoJDBC(alumnoNuevo);
