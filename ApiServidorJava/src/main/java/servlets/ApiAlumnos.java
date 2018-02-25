@@ -74,8 +74,9 @@ public class ApiAlumnos extends HttpServlet {
         Alumno a = (Alumno) request.getAttribute("alumno");
         
         if (as.addAlumno(a) > 0) {
+            
             MensajeHttp info = new MensajeHttp("Alumno insertado correctamente");
-            request.setAttribute("json", info);
+            request.setAttribute("json", info.getMensaje());
         }else{
             MensajeHttp info = new MensajeHttp("Error al insertar");
             request.setAttribute("json", info);
