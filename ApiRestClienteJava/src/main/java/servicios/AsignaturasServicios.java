@@ -1,6 +1,7 @@
 package servicios;
 
 import dao.AsignaturasDAO;
+import java.io.IOException;
 import java.util.List;
 import model.Asignatura;
 
@@ -10,24 +11,20 @@ import model.Asignatura;
  */
 public class AsignaturasServicios {
     
-    public List<Asignatura> mostrarAsignaturas(){
+    public List<Asignatura> mostrarAsignaturas() throws IOException{
         AsignaturasDAO dao = new AsignaturasDAO();
-        
         return dao.getAllAsignaturasDBUils();
     }
-     public void addAsignatura(Asignatura AsignaturaNuevo){
-
+     public String addAsignatura(Asignatura AsignaturaNuevo) throws IOException{
         AsignaturasDAO dao = new AsignaturasDAO();
-        dao.insertAsignaturasDBUtils(AsignaturaNuevo);
+        return dao.insertAsignaturasDBUtils(AsignaturaNuevo);
     }
-    public void updateAsignatura(Asignatura AsignaturaNuevo){
-
+    public String updateAsignatura(Asignatura AsignaturaNuevo) throws IOException{
         AsignaturasDAO dao = new AsignaturasDAO();
-        dao.updateAsignaturasDBUtils(AsignaturaNuevo);
+        return dao.updateAsignaturasDBUtils(AsignaturaNuevo);
     }
-    public void deleteAsignatura(Asignatura AsignaturaNuevo){
-
+    public String deleteAsignatura(Asignatura AsignaturaNuevo) throws IOException{
         AsignaturasDAO dao = new AsignaturasDAO();
-        dao.deleteAsignaturasDBUtils(AsignaturaNuevo);
+        return dao.deleteAsignaturasDBUtils(AsignaturaNuevo);
     }
 }

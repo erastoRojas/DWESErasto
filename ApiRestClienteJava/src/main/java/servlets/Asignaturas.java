@@ -22,6 +22,7 @@ public class Asignaturas extends HttpServlet {
         
         AsignaturasServicios as = new AsignaturasServicios();
         String op = request.getParameter("op");
+        String cadenaFilas;
         
         if (op != null){    
             switch (op) {
@@ -31,22 +32,27 @@ public class Asignaturas extends HttpServlet {
                     break;
                     
                 case "INSERT":
-                    as.addAsignatura(modificarAsignatura(request));
-                    request.getRequestDispatcher("pintarListaAsignaturas.jsp").forward(request, response);
+                    
+                    //response.getWriter().write(as.addAlumno(a));
+                    cadenaFilas = as.addAsignatura(modificarAsignatura(request));
+                    request.setAttribute("mensaje",cadenaFilas);
                     break;
                     
                 case "UPDATE":
-                    as.updateAsignatura(modificarAsignatura(request));
-                    request.getRequestDispatcher("pintarListaAsignaturas.jsp").forward(request, response);
+
+                    //response.getWriter().write(as.addAlumno(a));
+                    cadenaFilas = as.updateAsignatura(modificarAsignatura(request));
+                    request.setAttribute("mensaje",cadenaFilas);
                     break;
                     
                 case "DELETE":
-                    as.deleteAsignatura(modificarAsignatura(request));
-                    request.getRequestDispatcher("pintarListaAsignaturas.jsp").forward(request, response);
+                    cadenaFilas = as.deleteAsignatura(modificarAsignatura(request));
+                    request.setAttribute("mensaje",cadenaFilas);
+                    
                     break;
             }
-        }else {
-            request.getRequestDispatcher("pintarListaAsignaturas.jsp").forward(request, response);}
+        }
+        request.getRequestDispatcher("pintarListaAsignaturas.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

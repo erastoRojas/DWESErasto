@@ -1,5 +1,6 @@
 package dao;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpRequest;
@@ -8,6 +9,7 @@ import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.UrlEncodedContent;
 import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.http.json.JsonHttpContent;
 import com.google.api.client.json.GenericJson;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.JsonObjectParser;
@@ -31,6 +33,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.Constantes;
 import com.google.gson.reflect.TypeToken;
+import config.Configuration;
 
 /**
  *
@@ -48,28 +51,29 @@ public class AlumnosDAO {
                   request.setParser(new JsonObjectParser(JSON_FACTORY));
               }
           });
-    GenericUrl url = new GenericUrl("http://localhost:8282/ApiServidor/rest/apiAlumnos");
-    
-    
-    public GenericData data = new GenericData();
-    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-    Date today = Calendar.getInstance().getTime();
-    public String reportDate = df.format(today);
-    
+
+    //public GenericData data = new GenericData();
+    GenericUrl url = new GenericUrl("http://localhost:8282/ApiServidorJava/rest/apiAlumnos");
     ObjectMapper objectMapper = new ObjectMapper();
     
     public List<Alumno> getAllAlumnosJDBC() throws IOException {
-             
+  
         HttpRequest requestGoogle = requestFactory.buildGetRequest(url);
-        List<Alumno> datos = objectMapper.readValue(
-        requestGoogle.execute().parseAsString(),
-        objectMapper.getTypeFactory().constructCollectionType(List.class,Alumno.class));
+        List<Alumno> datos = objectMapper.readValue(requestGoogle.execute().parseAsString(),
+                             objectMapper.getTypeFactory().constructCollectionType(List.class,Alumno.class));
         
         return datos;
     }
     
-    public int insertAlumnoJDBC(Alumno a) throws IOException {
+    public String insertAlumnoJDBC(Alumno a) throws IOException {
         
+        url.set("alumno",objectMapper.writeValueAsString(a));
+        HttpRequest requestGoogle = requestFactory.buildPutRequest(url, new JsonHttpContent(new JacksonFactory(), a));
+        //requestGoogle.getHeaders().set("API_KEY", Configuration.getInstance().getApiKey());
+        
+        return requestGoogle.execute().parseAsString();
+        
+        /*
         data.put("nombre",a.getNombre());
         data.put("fecha_nacimiento",a.getFecha_nacimiento());
         data.put("mayor",a.getMayor_edad());
@@ -79,45 +83,19 @@ public class AlumnosDAO {
         objectMapper.getTypeFactory().constructCollectionType(List.class,Alumno.class));
         
         return datos;
+        */
     }
-    public int updateAlumnoJDBC(Alumno a) {
-        DBConnection db = new DBConnection();
-        Connection con = null;
-        int filas = 0;
-        try {
-            con = db.getConnection();
-            PreparedStatement stmt = con.prepareStatement("UPDATE ALUMNOS SET NOMBRE = ?,FECHA_NACIMIENTO = ?, MAYOR_EDAD = ? WHERE ID = ?");
- 
-            stmt.setString(1, a.getNombre());
-            stmt.setDate(2, new java.sql.Date(a.getFecha_nacimiento().getTime()));
-            stmt.setBoolean(3, a.getMayor_edad());
-            stmt.setLong(4,a.getId());
-            
-            filas = stmt.executeUpdate();
-
-        } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.cerrarConexion(con);
-        }
-        return filas;
+    public String updateAlumnoJDBC(Alumno a) throws IOException {
+        url.set("alumno",objectMapper.writeValueAsString(a));
+        HttpRequest requestGoogle = requestFactory.buildPostRequest(url, new JsonHttpContent(new JacksonFactory(), a));
+        
+        return requestGoogle.execute().parseAsString();
     }
     
-    public int deleteAlumnoJDBC(Alumno a) {
-        DBConnection db = new DBConnection();
-        Connection con = null;
-        int filas = 0;
-        try {
-            con = db.getConnection();
-            PreparedStatement stmt = con.prepareStatement("DELETE FROM ALUMNOS WHERE ID =" + a.getId());
-            
-            filas = stmt.executeUpdate();
-
-        } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.cerrarConexion(con);
-        }
-        return filas;
+    public String deleteAlumnoJDBC(Alumno a) throws IOException {
+        url.set("alumno",objectMapper.writeValueAsString(a));
+        HttpRequest requestGoogle = requestFactory.buildDeleteRequest(url);//porque solo la url
+        
+        return requestGoogle.execute().parseAsString();
     }
 }
