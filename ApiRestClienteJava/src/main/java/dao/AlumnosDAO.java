@@ -53,7 +53,7 @@ public class AlumnosDAO {
           });
 
     //public GenericData data = new GenericData();
-    GenericUrl url = new GenericUrl("http://localhost:8282/ApiServidorJava/rest/apiAlumnos");
+    GenericUrl url = new GenericUrl("http://localhost:8080/ApiServidorJava/rest/apiAlumnos");
     ObjectMapper objectMapper = new ObjectMapper();
     
     public List<Alumno> getAllAlumnosJDBC() throws IOException {
@@ -71,7 +71,8 @@ public class AlumnosDAO {
         HttpRequest requestGoogle = requestFactory.buildPutRequest(url, new JsonHttpContent(new JacksonFactory(), a));
         //requestGoogle.getHeaders().set("API_KEY", Configuration.getInstance().getApiKey());
         
-        return requestGoogle.execute().parseAsString();
+        GenericJson gj = requestGoogle.execute().parseAs(GenericJson.class);
+        return (String)gj.get("mensaje");
         
         /*
         data.put("nombre",a.getNombre());
@@ -89,13 +90,15 @@ public class AlumnosDAO {
         url.set("alumno",objectMapper.writeValueAsString(a));
         HttpRequest requestGoogle = requestFactory.buildPostRequest(url, new JsonHttpContent(new JacksonFactory(), a));
         
-        return requestGoogle.execute().parseAsString();
+        GenericJson gj = requestGoogle.execute().parseAs(GenericJson.class);
+        return (String)gj.get("mensaje");
     }
     
     public String deleteAlumnoJDBC(Alumno a) throws IOException {
         url.set("alumno",objectMapper.writeValueAsString(a));
         HttpRequest requestGoogle = requestFactory.buildDeleteRequest(url);//porque solo la url
         
-        return requestGoogle.execute().parseAsString();
+        GenericJson gj = requestGoogle.execute().parseAs(GenericJson.class);
+        return (String)gj.get("mensaje");
     }
 }
