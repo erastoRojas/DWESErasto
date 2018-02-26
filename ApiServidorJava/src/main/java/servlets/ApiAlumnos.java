@@ -63,7 +63,7 @@ public class ApiAlumnos extends HttpServlet {
             request.setAttribute("json", info);
         }else{
             MensajeHttp info = new MensajeHttp("Error al borrar");
-            request.setAttribute("json", info);
+            request.setAttribute("json", info.getMensaje());
         }  
     }
 
