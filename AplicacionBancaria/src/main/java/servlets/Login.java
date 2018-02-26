@@ -58,7 +58,7 @@ public class Login extends HttpServlet {
                     cl = ls.getCliente(cl);
                     
                     if(cl != null){
-                        if(cl.getPass() == pass){
+                        if(cl.getPass().equals(pass)){
                             request.getSession().setAttribute("sesion",true);
                             //variable session con el dni
                         }else{
@@ -73,6 +73,9 @@ public class Login extends HttpServlet {
                         response.getWriter().println("Este cliente no existe");
                         break;
                     }
+                
+                case "REGISTRAR":
+                    break;
                     
             }
         }
