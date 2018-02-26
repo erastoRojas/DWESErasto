@@ -64,7 +64,7 @@
             </form>
         </div>
         <div id="output"></div>
-        <script language="javascript" type="text/javascript" src="websocket.js">
+        <script language="javascript" type="text/javascript" src="websockets.js">
         </script>
     </body>
 </html>

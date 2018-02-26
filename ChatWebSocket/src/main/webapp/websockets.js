@@ -37,7 +37,9 @@
  * only if the new code is made subject to such option by the copyright
  * holder.
  */
-
+var user = "google";
+var pass = "mierda";
+var websocket;
 var wsUri = "ws://localhost:8080/ChatWebSocket/endpoint";
 console.log("Connecting to " + wsUri);
 var token = "Token";
@@ -47,18 +49,41 @@ var options = {
   }
 };
 
-var websocket = new WebSocket(wsUri,[],options);
-websocket.onopen = function(evt) { onOpen(evt) };
-websocket.onmessage = function(evt) { onMessage(evt) };
-websocket.onerror = function(evt) { onError(evt) };
-websocket.onclose = function(evt) { onClose(evt) };
+//var websocket = new WebSocket(wsUri,[],options);
+websocket = new WebSocket(wsUri + "/" + user + "/" + pass , []);
+
+websocket.onopen = function(evt) { 
+    onOpen(evt);
+};
+websocket.onmessage = function(evt) { 
+    onMessage(evt); 
+};
+websocket.onerror = function(evt) { 
+    onError(evt); 
+};
+websocket.onclose = function(evt) { 
+    onClose(evt); 
+};
 
 var output = document.getElementById("output");
-
+/////////////////
 function sayHello() {
-    console.log("sayHello: " + myField.value);
-    websocket.send(myField.value);
-    writeToScreen("SENT (text): " + myField.value);
+    console.log("metodo sayHello: " + myField.value);
+    
+    var fecha = new Date();
+    var booleano = true;
+    
+    var object = {
+        "tipo": "texto",
+        "contenido": myField.value,
+        "destino": "texto",
+        "fecha": fecha,
+        "usuario": "erasto",
+        "guardado": booleano,
+    };
+    
+    websocket.send(JSON.stringify(object));
+    writeToScreen("enviado (text): " + myField.value);
 }
 
 function echoBinary() {
@@ -74,17 +99,20 @@ function echoBinary() {
 }
 ///////////////
 function onOpen() {
-    console.log("onOpen");
+    console.log("metodo onOpen");
     writeToScreen("CONNECTED");
 }
 function onClose() {
-    
+    console.log("metodo onClose");
     writeToScreen("DISCONNECTED");
 }
 //////////////
 function onMessage(evt) {
+    
+    var datos = JSON.parse(evt.data);
+    
     if (typeof evt.data == "string") {
-        writeToScreen("RECEIVED (text): " + evt.data);
+        writeToScreen(datos.usuario + ": " + datos.contenido);
     } else {
         writeToScreen("RECEIVED (binary): " + evt.data);
     }
