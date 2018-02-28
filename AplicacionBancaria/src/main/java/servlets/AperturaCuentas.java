@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "AperturaCuentas", urlPatterns =
 {
-    "/aperturaCuentas"
+    "/secure/aperturaCuentas"
 })
 public class AperturaCuentas extends HttpServlet
 {

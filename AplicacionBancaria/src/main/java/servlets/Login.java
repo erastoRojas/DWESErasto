@@ -6,18 +6,17 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Cliente;
+import model.Trabajador;
 import servicios.LoginServicios;
 
 /**
  *
- * @author DAW
+ * @author erasto
  */
 @WebServlet(name = "Login", urlPatterns = {"/login"})
 public class Login extends HttpServlet {
@@ -35,32 +34,28 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         
         String op = request.getParameter("op");
-        String dni = request.getParameter("dni");
         String pass = request.getParameter("pass");
         String nombre = request.getParameter("nombre");
-        String direccion = request.getParameter("direccion");
-        String telefono = request.getParameter("telefono");
-        String email = request.getParameter("email");
-        String fecha_nac = request.getParameter("fecha_nac");
-        String fecha_cuen = request.getParameter("fecha_cuen");
-        String num_cuentas = request.getParameter("num_cuentas");
-        String saldo = request.getParameter("saldo");
          
         LoginServicios ls = new LoginServicios();
+        Trabajador tr = new Trabajador();
         
         if (op != null){    
             switch (op) {  
                     
                 case "LOGIN":
                     
-                    Cliente cl = new Cliente();
-                    cl.setCl_dni(dni);
-                    cl = ls.getCliente(cl);
+                    tr.setTr_id(pass);
+                    tr.setTr_id(nombre);
+                    tr = ls.getTrabajador(tr);
                     
-                    if(cl != null){
-                        if(cl.getPass().equals(pass)){
+                    if(tr != null){
+                        if(tr.getTr_id().equals(pass)){
                             request.getSession().setAttribute("sesion",true);
                             //variable session con el dni
+                            request.setAttribute("usuario", tr.getTr_no());
+                            request.getRequestDispatcher("menuInicio.jsp").forward(request, response);
+                            break;
                         }else{
                             //Contraseña inválida
                             response.setStatus(500);
@@ -75,8 +70,29 @@ public class Login extends HttpServlet {
                     }
                 
                 case "REGISTRAR":
+                    
+                    int filas = 0;
+                    
+                    tr.setTr_id(pass);
+                    tr.setTr_no(nombre);
+                    
+                    filas = ls.crearTrabajador(tr);
+                    
+                    if(filas > 0){
+                        response.getWriter().println("Trabajador creado correctamente");
+                    }else{
+                        //No se ha podido registrar
+                        response.setStatus(500);
+                        response.getWriter().println("No ha sido posible registrar al trabajdor"); 
+                    }
+                    
                     break;
                     
+                case "CERRAR":
+                    
+                    request.getSession().setAttribute("sesion",null);
+                    
+                break;    
             }
         }
                    

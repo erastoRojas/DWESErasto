@@ -6,7 +6,9 @@
 package servicios;
 
 import dao.ClientesDAO;
+import dao.TrabajadoresDAO;
 import model.Cliente;
+import model.Trabajador;
 
 /**
  *
@@ -14,9 +16,14 @@ import model.Cliente;
  */
 public class LoginServicios {
 
-    public Cliente getCliente(Cliente cl) {
-        ClientesDAO dao = new ClientesDAO();
-        return dao.getClienteDAO(cl);
+    public Trabajador getTrabajador(Trabajador tr) {
+        TrabajadoresDAO dao = new TrabajadoresDAO();
+        return dao.getTrabajadorDAO(tr);
+    }
+
+    public int crearTrabajador(Trabajador tr) {
+        TrabajadoresDAO dao = new TrabajadoresDAO();
+        return dao.crearTrabajadorDAO(tr); 
     }
     
 }

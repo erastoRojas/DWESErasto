@@ -20,7 +20,7 @@ import servicios.MovimientosServicios;
  *
  * @author erasto
  */
-@WebServlet(name = "Movimientos", urlPatterns = {"/movimientos"})
+@WebServlet(name = "Movimientos", urlPatterns = {"/secure/movimientos"})
 public class Movimientos extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -83,6 +83,10 @@ public class Movimientos extends HttpServlet {
             String json = new Gson().toJson(lista);
             response.getWriter().print(json);
             
+        }
+        if(n_cuenta == null){
+            //manda a pagina de inicio
+            request.getRequestDispatcher("movimientos.jsp").forward(request, response);
         }
     }
 

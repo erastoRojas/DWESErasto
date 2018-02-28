@@ -26,7 +26,7 @@ import model.Cliente;
  *
  * @author erasto
  */
-@WebServlet(name = "IngresosYReintegros", urlPatterns = {"/ingresosYReintegros"})
+@WebServlet(name = "IngresosYReintegros", urlPatterns = {"/secure/ingresosYReintegros"})
 public class IngresosYReintegros extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
