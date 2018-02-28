@@ -58,14 +58,14 @@ public class Login extends HttpServlet {
                             break;
                         }else{
                             //Contraseña inválida
-                            response.setStatus(500);
-                            response.getWriter().println("Contraseña inválida");
+                            request.setAttribute("error", "Contraseña invalida");
+                            request.getRequestDispatcher("inicio.jsp").forward(request, response);
                             break;
                         }  
                     }else{
                         //El usuario no existe
-                        response.setStatus(500);
-                        response.getWriter().println("Este cliente no existe");
+                        request.setAttribute("error", "El usuario no existe");
+                        request.getRequestDispatcher("inicio.jsp").forward(request, response);
                         break;
                     }
                 

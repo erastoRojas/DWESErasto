@@ -3,6 +3,11 @@
     Created on : 23-feb-2018, 13:35:45
     Author     : erasto
 --%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
     <head>
@@ -29,8 +34,10 @@
                         <div style="padding: 15px;margin: 15px;">
                             <button name="op" id="op" value="LOGIN">Login</button>
                         </div>
+                        <div style="color:red;"><c:out value="${error}"></c:out></div>
                         <div style="border-bottom: 2px solid;padding: 15px"></div>
                     </form>
+                        
                     <form action="${pageContext.request.contextPath}/login?op=op" method="get">
                         <span><h2>REGISTRAR</h2></span><br>
                         <label><b>Nombre:</b></label>
@@ -43,6 +50,7 @@
                         <div style="border-bottom: 2px solid;padding: 15px"></div>
                     </form>
                 </div>
+                        <br>
             </div>
         </div> 
     </body>

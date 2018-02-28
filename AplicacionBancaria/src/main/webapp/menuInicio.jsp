@@ -38,7 +38,8 @@
                 </div>
                 <div class="col-12 col-md-3 headera">
                     <p>Empleado:</p>
-                    <c:out value="${usuario}"></c:out><br>
+                    <div style="color:blue;"><c:out value="${usuario}"></c:out></div><br>
+                    
                     <a  href="#">Cerrar sesión</a>
                 </div>
               </div> 
