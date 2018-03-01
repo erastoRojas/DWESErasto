@@ -70,8 +70,6 @@ public class ServerEndPoint {
                     new TypeReference<MensajeWS>() {
             });
             
-            if(meta.getUsuario().equals("erasto")){
-                
                 //Object to JSON in String
                 String jsonInString = mapper.writeValueAsString(meta);
                 
@@ -79,8 +77,7 @@ public class ServerEndPoint {
                 for (Session sesionesMandar : sessionQueManda.getOpenSessions()) {
 
                 sesionesMandar.getBasicRemote().sendText(jsonInString);   
-                }
-            
+                
             }
         }
     }

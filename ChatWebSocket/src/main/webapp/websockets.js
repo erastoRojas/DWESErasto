@@ -38,7 +38,7 @@
  * holder.
  */
 var user = "google";
-var pass = "mierda";
+var pass = "chachi";
 var websocket;
 var wsUri = "ws://localhost:8080/ChatWebSocket/endpoint";
 console.log("Connecting to " + wsUri);
@@ -83,7 +83,7 @@ function sayHello() {
     };
     
     websocket.send(JSON.stringify(object));
-    writeToScreen("enviado (text): " + myField.value);
+    writeToScreen("enviado: " + myField.value);
 }
 
 function echoBinary() {
