@@ -17,6 +17,11 @@ public class MensajeHttp {
         this.mensaje = mensaje;
     }
 
+    public MensajeHttp()
+    {
+        //CONSTRUCTOR
+    }
+
     public String getMensaje() {
         return mensaje;
     }

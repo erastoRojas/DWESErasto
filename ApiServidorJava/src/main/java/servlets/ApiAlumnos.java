@@ -3,9 +3,12 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,8 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 import model.Alumno;
 import model.ApiKey;
 import model.MensajeHttp;
+import org.apache.http.HttpStatus;
 import servicios.AlumnosServicios;
 import servicios.ApiKeyServicios;
+import utils.Constantes;
 
 /**
  *
@@ -57,8 +62,12 @@ public class ApiAlumnos extends HttpServlet {
         throws ServletException, IOException {
         
         Alumno a = (Alumno) request.getAttribute("alumno");
-
-        if (as.deleteAlumno(a) > 0) {
+        int filas = 0;
+        
+        if (a != null && a.getId() > 0) {
+            filas = as.deleteAlumno(a);
+        }
+        if (filas > 0) {
             MensajeHttp info = new MensajeHttp("Alumno borrado correctamente");
             request.setAttribute("json", info);
         }else{

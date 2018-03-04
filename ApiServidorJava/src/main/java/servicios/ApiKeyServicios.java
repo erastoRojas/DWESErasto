@@ -25,4 +25,30 @@ public class ApiKeyServicios{
         ApiKeyDAO dao = new ApiKeyDAO();
         return dao.selectApiKeyJDBC(k);
     }
+     
+     
 }
+
+
+/*//COMPROBACIONES MIGUEL APIKEY
+public boolean comprobarDatosKey(ApiKey k) {
+        ApiDAO ad = new ApiDAO();
+        LocalDateTime fechaActual = LocalDateTime.now().minusMinutes(Configuration.getInstance().getMinutosValidarKey());
+        LocalDateTime ultimaPeticion = k.getFECHA_ULTIMA_PETICION();
+        boolean datosCorrectos;
+
+        if (ultimaPeticion.isAfter(fechaActual)) {
+            if(k.getNUM_PETICIONES() == Configuration.getInstance().getTotalConsultas()){
+                datosCorrectos = false;
+            }else{
+                k.setNUM_PETICIONES(k.getNUM_PETICIONES()+1);
+                ad.updatePeticiones(k);
+                datosCorrectos = true;
+            }
+        } else {
+            k.setFECHA_ULTIMA_PETICION(LocalDateTime.now());
+            ad.updateHora(k);
+            datosCorrectos = true;
+        }
+        return datosCorrectos;
+    }*/
