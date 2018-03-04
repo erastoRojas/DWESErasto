@@ -37,7 +37,7 @@ public class ServerEndPoint {
         session.getUserProperties().put("user",user);   //crea variables //get user propierties se usa para utilizarlos en los metodos de abajo
         session.getUserProperties().put("pass",pass);
         
-        if (user.equals("google")) {   //busca en la base de datos
+        if (user.equals("google")) {    //busca en la base de datos
             session.getUserProperties().put("login",
               "si"); 
         } else {
@@ -72,7 +72,6 @@ public class ServerEndPoint {
             
                 //Object to JSON in String
                 String jsonInString = mapper.writeValueAsString(meta);
-                
                 
                 for (Session sesionesMandar : sessionQueManda.getOpenSessions()) {
 
