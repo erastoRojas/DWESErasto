@@ -40,7 +40,7 @@ public class IngresosYReintegros extends HttpServlet {
             
             int importe = Integer.parseInt(request.getParameter("importe"));
             String descripcion = request.getParameter("descripcion");
-            String dni = "11111111A";//request.getParameter("dni");
+            String dni = "11111111A";//request.getParameter("dni");//variable se sesion
 
             Date date = new Date();
 

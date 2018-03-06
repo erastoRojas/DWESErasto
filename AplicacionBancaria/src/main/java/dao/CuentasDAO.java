@@ -21,7 +21,7 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 public class CuentasDAO
 {
 
-    public Cuenta getCuentaDAO(Cuenta cu) {
+    public Cuenta getCuentaDAO(Cuenta cu) {//api
         Cuenta cuenta = null;
         DBConnection db = new DBConnection();
         Connection con = null;
@@ -40,7 +40,7 @@ public class CuentasDAO
         return cuenta;
     }
     
-    public Cuenta getSaldoDAO(Cuenta cu){
+    public Cuenta getSaldoDAO(Cuenta cu){//api
         Cuenta cuenta = null;
         DBConnection db = new DBConnection();
         Connection con = null;
@@ -59,7 +59,7 @@ public class CuentasDAO
         return cuenta;
     }
     
-    public int updateCuentaDAO(Cuenta cu){
+    public int updateCuentaDAO(Cuenta cu){//api
         DBConnection db = new DBConnection();
         Connection con = null;
         int filas = 0;
