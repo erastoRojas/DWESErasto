@@ -79,7 +79,7 @@ public class ClientesDAO {
             filas = stmt.executeUpdate();
 
         } catch (Exception ex) {
-            Logger.getLogger(CuentasDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             db.cerrarConexion(con);
         }
