@@ -20,6 +20,9 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import model.Cliente;
+import model.Cuenta;
+import model.Movimiento;
 
 
 /**
@@ -46,35 +49,42 @@ public class FilterJson implements Filter {
         }
         ObjectMapper mapper = new ObjectMapper();
 
-        /*
-        String alumno = request.getParameter("alumno");
-        if (alumno != null) {
-            Alumno a = mapper.readValue(alumno, new TypeReference<Alumno>() {
+        
+        String getCliente = request.getParameter("getCliente");
+        if (getCliente != null) {
+            Cliente cl = mapper.readValue(getCliente, new TypeReference<Cliente>() {
             });
-            request.setAttribute("alumno", a);
+            request.setAttribute("getCliente", cl);
         }
         
-        String asignatura = request.getParameter("asignatura");
-        if (asignatura != null) {
-            Asignatura a = mapper.readValue(asignatura, new TypeReference<Asignatura>() {
+        String cuenta = request.getParameter("getCuenta");
+        if (cuenta != null) {
+            Cuenta cu = mapper.readValue(cuenta, new TypeReference<Cuenta>() {
             });
-            request.setAttribute("asignatura", a);
+            request.setAttribute("getCuenta", cu);
         }
         
-        String nota = request.getParameter("nota");
-        if (nota != null) {
-            Nota n = mapper.readValue(nota, new TypeReference<Nota>() {
+        String saldo = request.getParameter("getSaldo");
+        if (saldo != null) {
+            Cuenta cu = mapper.readValue(saldo, new TypeReference<Cuenta>() {
             });
-            request.setAttribute("nota", n);
+            request.setAttribute("getSaldo", cu);
         }
         
-        String apikey = request.getParameter("apikey");
-        if (apikey != null) {
-            ApiKey k = mapper.readValue(apikey, new TypeReference<ApiKey>() {
+        String cliente = request.getParameter("updateCliente");
+        if (cliente != null) {
+            Cliente cl = mapper.readValue(cliente, new TypeReference<Cliente>() {
             });
-            request.setAttribute("apikey", k);
+            request.setAttribute("updateCliente", cl);
         }
-        */
+        
+        String movimiento = request.getParameter("crearMovimiento");
+        if (movimiento != null) {
+            Movimiento mv = mapper.readValue(movimiento, new TypeReference<Movimiento>() {
+            });
+            request.setAttribute("crearMovimiento", mv);
+        }
+        
         // Write code here to process the request and/or response before
         // the rest of the filter chain is invoked.
         // For example, a logging filter might log items on the request object,

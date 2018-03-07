@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Cliente;
 import model.Cuenta;
 import model.MensajeHttp;
+import model.Movimiento;
 import servicios.ClientesServicios;
 import servicios.IngresosYReintegrosServicios;
 
@@ -46,13 +47,10 @@ public class IngresosYReintegrosREST extends HttpServlet
     {
         
         Cliente getCliente = (Cliente) request.getAttribute("getCliente");
-        Cliente updateCliente = (Cliente) request.getAttribute("updateCliente");
         Cuenta getCuenta = (Cuenta) request.getAttribute("getCuenta");
+        Cuenta getSaldo = (Cuenta) request.getAttribute("getSaldo");
         String op = (String) request.getAttribute("op");
 
-        int lineas;
-
-        
         if (op != null){    
             switch (op) {
                 case "getCliente":
@@ -75,30 +73,7 @@ public class IngresosYReintegrosREST extends HttpServlet
                     }
                     
                     break;
-                 
-                case "updateCliente":
-                    
-                    if(updateCliente != null){
-            
-                        lineas = ir.updateCliente(updateCliente);//no sera mejor devolver un boolean
-
-                        if(lineas > 0){
-                            //MensajeHttp info = new MensajeHttp("Alumno modificado correctamente");
-                            request.setAttribute("json", getCliente);
-                        }else{
-                            //status??
-                            MensajeHttp info = new MensajeHttp("Ha habido un error");
-                            request.setAttribute("json", info);
-                        }
-
-                    }else{
-                        //status??
-                        MensajeHttp info = new MensajeHttp("Ha habido un error");
-                        request.setAttribute("json", info);
-                    }
-                    
-                    break;
-                    
+ 
                 case "getCuenta":
                     
                     if(getCuenta != null){
@@ -121,17 +96,32 @@ public class IngresosYReintegrosREST extends HttpServlet
                     }
                     
                     break;
+                    
+                    case "getSaldo":
+                    
+                    if(getSaldo != null){
+            
+                        getSaldo = ir.getCuenta(getSaldo);//no sera mejor devolver un boolean
+
+                        if(getCuenta != null){
+                            //MensajeHttp info = new MensajeHttp("Alumno modificado correctamente");
+                            request.setAttribute("json", getSaldo);
+                        }else{
+                            //status??
+                            MensajeHttp info = new MensajeHttp("Ha habido un error");
+                            request.setAttribute("json", info);
+                        }
+
+                    }else{
+                        //status??
+                        MensajeHttp info = new MensajeHttp("Ha habido un error");
+                        request.setAttribute("json", info);
+                    }
+                    
+                    break;
             }
         }
-        
-        
-        
-        
-      
-        
-           
-        
-           
+            
     }
 
     /**
@@ -146,10 +136,62 @@ public class IngresosYReintegrosREST extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-      
+        Cliente updateCliente = (Cliente) request.getAttribute("updateCliente");
+        Movimiento crearMovimiento = (Movimiento) request.getAttribute("crearMovimiento");
+        String op = (String) request.getAttribute("op");
         
+        int lineas = 0;
         
+        if (op != null){    
+            switch (op) {
         
+                case "updateCliente":
+                    
+                    if(updateCliente != null){
+            
+                        lineas = ir.updateCliente(updateCliente);//no sera mejor devolver un boolean
+
+                        if(lineas > 0){
+                            //MensajeHttp info = new MensajeHttp("Alumno modificado correctamente");
+                            request.setAttribute("json", updateCliente);
+                        }else{
+                            //status??
+                            MensajeHttp info = new MensajeHttp("Ha habido un error");
+                            request.setAttribute("json", info);
+                        }
+
+                    }else{
+                        //status??
+                        MensajeHttp info = new MensajeHttp("Ha habido un error");
+                        request.setAttribute("json", info);
+                    }
+                    
+                    break;
+                    
+                    case "crearMovimiento":
+                    
+                    if(crearMovimiento != null){
+            
+                        lineas = ir.crearMovimiento(crearMovimiento);//no sera mejor devolver un boolean
+
+                        if(lineas > 0){
+                            //MensajeHttp info = new MensajeHttp("Alumno modificado correctamente");
+                            request.setAttribute("json", crearMovimiento);
+                        }else{
+                            //status??
+                            MensajeHttp info = new MensajeHttp("Ha habido un error");
+                            request.setAttribute("json", info);
+                        }
+
+                    }else{
+                        //status??
+                        MensajeHttp info = new MensajeHttp("Ha habido un error");
+                        request.setAttribute("json", info);
+                    }
+                    
+                    break;
+            }
+        }
         
     }
     

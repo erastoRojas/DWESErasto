@@ -18,7 +18,7 @@ import servicios.ClientesServicios;
  *
  * @author erasto
  */
-@WebServlet(name = "Clientes", urlPatterns = {"/secure/clientes"})
+@WebServlet(name = "Clientes", urlPatterns = {"/clientes"})
 public class Clientes extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -26,7 +26,7 @@ public class Clientes extends HttpServlet {
         
             ClientesServicios cs = new ClientesServicios();
             
-            request.setAttribute("clientes", cs.getAllClientes());
+            //request.setAttribute("clientes", cs.getAllClientes());
             request.getRequestDispatcher("pintarClientes.jsp").forward(request, response);
         }
     

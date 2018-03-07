@@ -34,19 +34,22 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         
         String op = request.getParameter("op");
-        String pass = request.getParameter("pass");
+        String pass =  request.getParameter("pass");
         String nombre = request.getParameter("nombre");
          
-        LoginServicios ls = new LoginServicios();
-        Trabajador tr = new Trabajador();
-        
-        if (op != null){    
+        if (op != null){  
+            
+            LoginServicios ls = new LoginServicios();
+            Trabajador tr = new Trabajador();
+            int filas = 0;
+            
+            tr.setTr_id(pass);
+            tr.setTr_no(nombre);
+             
             switch (op) {  
                     
                 case "LOGIN":
                     
-                    tr.setTr_id(pass);
-                    tr.setTr_id(nombre);
                     tr = ls.getTrabajador(tr);
                     
                     if(tr != null){
@@ -54,7 +57,8 @@ public class Login extends HttpServlet {
                             request.getSession().setAttribute("sesion",true);
                             //variable session con el dni
                             request.setAttribute("usuario", tr.getTr_no());
-                            request.getRequestDispatcher("menuInicio.jsp").forward(request, response);
+                            request.setAttribute("error", "Bienvenido");
+                            request.getRequestDispatcher("inicio.jsp").forward(request, response);
                             break;
                         }else{
                             //Contraseña inválida
@@ -69,21 +73,27 @@ public class Login extends HttpServlet {
                         break;
                     }
                 
-                case "REGISTRAR":
+                case "REGISTRAR":   
+                     
+                    if(ls.getTrabajador(tr) == null){
+                        
+                        tr.setTr_id(pass);
+                        tr.setTr_no(nombre);
                     
-                    int filas = 0;
-                    
-                    tr.setTr_id(pass);
-                    tr.setTr_no(nombre);
-                    
-                    filas = ls.crearTrabajador(tr);
-                    
-                    if(filas > 0){
-                        response.getWriter().println("Trabajador creado correctamente");
+                        filas = ls.crearTrabajador(tr);//llamada a servicios
+
+                        if(filas > 0){
+                            request.setAttribute("error", "Trabajador creado correctamente");
+                        }else{
+                            //No se ha podido registrar
+                            response.setStatus(500);
+                            request.setAttribute("error" , "No ha sido posible registrar al trabajador"); 
+                        }
                     }else{
-                        //No se ha podido registrar
-                        response.setStatus(500);
-                        response.getWriter().println("No ha sido posible registrar al trabajdor"); 
+                        //El usuario  existe
+                        request.setAttribute("error", "El usuario Existe");
+                        request.getRequestDispatcher("inicio.jsp").forward(request, response);
+                        break;
                     }
                     
                     break;

@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <h1>APLICACION BANCARIA</h1>
-                    <form action="${pageContext.request.contextPath}/login?op=op" method="get">
+                    <form action="${pageContext.request.contextPath}/login?op=op">
                         <span><h2>LOGIN</h2></span><br>
                         <label><b>Nombre:</b></label>
                         <input type="text" id="nombre" name="nombre" required/><br>           
@@ -38,7 +38,7 @@
                         <div style="border-bottom: 2px solid;padding: 15px"></div>
                     </form>
                         
-                    <form action="${pageContext.request.contextPath}/login?op=op" method="get">
+                    <form action="${pageContext.request.contextPath}/login?op=op">
                         <span><h2>REGISTRAR</h2></span><br>
                         <label><b>Nombre:</b></label>
                         <input type="text" id="nombre" name="nombre" required/><br>          
@@ -51,6 +51,7 @@
                     </form>
                 </div>
                         <br>
+                        <p><c:out value="${error}"></c:out></p>
             </div>
         </div> 
     </body>

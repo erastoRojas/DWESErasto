@@ -5,9 +5,9 @@
  */
 package servicios;
 
-import dao.ClientesDAO;
+
 import dao.TrabajadoresDAO;
-import model.Cliente;
+
 import model.Trabajador;
 
 /**

@@ -20,7 +20,7 @@ import servicios.MovimientosServicios;
  *
  * @author erasto
  */
-@WebServlet(name = "Movimientos", urlPatterns = {"/secure/movimientos"})
+@WebServlet(name = "Movimientos", urlPatterns = {"/movimientos"})//          /secure
 public class Movimientos extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

@@ -28,8 +28,8 @@ public class TrabajadoresDAO {
             con = db.getConnection();
             QueryRunner qr = new QueryRunner();
             ResultSetHandler<Trabajador> h = new BeanHandler<>(Trabajador.class);
-            trabajador = qr.query(con, "SELECT * FROM TRABAJADORES "
-                                     + "WHERE tr_id = ?", h,tr.getTr_id());
+                     trabajador = qr.query(con, "SELECT * FROM TRABAJADORES "
+                                     + "WHERE tr_no = ?", h,tr.getTr_no());
 
         } catch (Exception ex){
             Logger.getLogger(TrabajadoresDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -53,7 +53,7 @@ public class TrabajadoresDAO {
             filas = stmt.executeUpdate();
             
         } catch (Exception ex) {
-            Logger.getLogger(MovimientosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TrabajadoresDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             db.cerrarConexion(con);
         }
