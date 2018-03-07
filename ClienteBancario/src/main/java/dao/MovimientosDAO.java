@@ -40,7 +40,7 @@ public class MovimientosDAO {
             lista = qr.query(con,"select * FROM movimientos", h);
 
         } catch (Exception ex) {
-            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MovimientosDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
 
             db.cerrarConexion(con);
@@ -84,7 +84,7 @@ public class MovimientosDAO {
         return cuenta;
     }
 
-    public int crearMovimientoDAO(Movimiento mo){
+    public int crearMovimientoDAO(Movimiento mo){//api
         
         DBConnection db = new DBConnection();
         Connection con = null;

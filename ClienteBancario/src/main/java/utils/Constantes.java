@@ -10,5 +10,7 @@ package utils;
  * @author daw
  */
 public class Constantes {
+    public static final String PINTAR_LOGIN = "pintarLogin.jsp";
+   
     
 }

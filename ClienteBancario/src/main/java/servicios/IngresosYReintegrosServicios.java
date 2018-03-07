@@ -5,9 +5,9 @@
  */
 package servicios;
 
-import dao.ClientesDAO;
-import dao.CuentasDAO;
-import dao.MovimientosDAO;
+import dao.ClientesAPI;
+import dao.CuentasAPI;
+import dao.MovimientosAPI;
 import model.Cliente;
 import model.Cuenta;
 import model.Movimiento;
@@ -20,32 +20,32 @@ public class IngresosYReintegrosServicios
 {
 
     public Cuenta getCuenta(Cuenta cu) {
-        CuentasDAO dao = new CuentasDAO();
+        CuentasAPI dao = new CuentasAPI();
         return dao.getCuentaDAO(cu);
     }
 
     public int crearMovimiento(Movimiento mo) {
-        MovimientosDAO dao = new MovimientosDAO();
+        MovimientosAPI dao = new MovimientosAPI();
         return dao.crearMovimientoDAO(mo);
     }
 
     public int updateCuenta(Cuenta cu) {
-        CuentasDAO dao = new CuentasDAO();
+        CuentasAPI dao = new CuentasAPI();
         return dao.updateCuentaDAO(cu);
     }
     
     public Cliente getCliente(Cliente cl){
-        ClientesDAO dao = new ClientesDAO();
+        ClientesAPI dao = new ClientesAPI();
         return dao.getClienteDAO(cl);
     }
 
     public int updateCliente(Cliente cl){
-        ClientesDAO dao = new ClientesDAO();
+        ClientesAPI dao = new ClientesAPI();
         return dao.updateClienteDAO(cl);
     }
 
     public Cuenta getSaldo(Cuenta cu){
-        CuentasDAO dao = new CuentasDAO();
+        CuentasAPI dao = new CuentasAPI();
         return dao.getSaldoDAO(cu);
     }
 }

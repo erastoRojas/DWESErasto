@@ -5,7 +5,7 @@
  */
 package servicios;
 
-import dao.ClientesDAO;
+import dao.ClientesAPI;
 import java.util.List;
 import model.Cliente;
 
@@ -14,10 +14,10 @@ import model.Cliente;
  * @author erasto
  */
 public class ClientesServicios {
-
+/*
     public List<Cliente> getAllClientes() {
-        ClientesDAO dao = new ClientesDAO();
+        ClientesAPI dao = new ClientesAPI();
         return dao.getAllClientesDBUils();
     }
-    
+    */
 }

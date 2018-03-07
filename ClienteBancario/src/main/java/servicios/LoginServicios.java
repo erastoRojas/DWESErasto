@@ -5,7 +5,7 @@
  */
 package servicios;
 
-import dao.ClientesDAO;
+import dao.ClientesAPI;
 import dao.TrabajadoresDAO;
 import model.Cliente;
 import model.Trabajador;

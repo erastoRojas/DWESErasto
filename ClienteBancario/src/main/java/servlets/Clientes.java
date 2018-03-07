@@ -26,7 +26,7 @@ public class Clientes extends HttpServlet {
         
             ClientesServicios cs = new ClientesServicios();
             
-            request.setAttribute("clientes", cs.getAllClientes());
+           // request.setAttribute("clientes", cs.getAllClientes());
             request.getRequestDispatcher("pintarClientes.jsp").forward(request, response);
         }
     
