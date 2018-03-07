@@ -5,7 +5,7 @@
  */
 package servicios;
 
-import dao.MovimientosDAO;
+import dao.MovimientosAPI;
 import java.util.Date;
 import java.util.List;
 import model.Movimiento;
@@ -15,20 +15,20 @@ import model.Movimiento;
  * @author erasto
  */
 public class MovimientosServicios
-{
+{/*
     public List<Movimiento> getAllMovimientos() {
-        MovimientosDAO dao = new MovimientosDAO();
+        MovimientosAPI dao = new MovimientosAPI();
         return dao.getAllMovimientos();
     }
     
     public List<Movimiento> getMovimientos(Movimiento v,Date date1, Date date2) {
-        MovimientosDAO dao = new MovimientosDAO();
+        MovimientosAPI dao = new MovimientosAPI();
         return dao.getMovimientosDAO(v,date1,date2);
     }
     
     public Movimiento getCuenta(Movimiento v) {
-        MovimientosDAO dao = new MovimientosDAO();
+        MovimientosAPI dao = new MovimientosAPI();
         return dao.getCuentaDAO(v);
     }
-    
+    */
 }

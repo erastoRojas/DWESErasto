@@ -20,16 +20,12 @@ import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.GenericData;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.util.List;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Cliente;
-import model.Cuenta;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.ResultSetHandler;
-import org.apache.commons.dbutils.handlers.BeanHandler;
+
+import utils.Constantes;
 
 /**
  *
@@ -50,7 +46,7 @@ public class ClientesAPI
           });
     
     public GenericData data = new GenericData();
-    GenericUrl url = new GenericUrl("http://localhost:8828/ApiServidorJava/rest/apiAlumnos");
+    GenericUrl url = new GenericUrl(Constantes.INGRESOS_Y_REINTEGROS_REST);
     ObjectMapper objectMapper = new ObjectMapper();
     
     public Cliente getClienteDAO(Cliente cl) {//api
@@ -68,8 +64,7 @@ public class ClientesAPI
 
             HttpResponse response = requestGoogle.execute();
             
-            cliente = mapper.readValue(response.getContent(), 
-                    objectMapper.getTypeFactory().constructCollectionType(List.class, Cliente.class));
+            cliente = mapper.readValue(response.getContent(), Cliente.class);//pasar esto a entero
 
         } catch (HttpResponseException ex) {
             Logger.getLogger(CuentasAPI.class.getName()).log(Level.SEVERE, null, ex);

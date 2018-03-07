@@ -20,12 +20,12 @@ import servicios.MovimientosServicios;
  *
  * @author erasto
  */
-@WebServlet(name = "Movimientos", urlPatterns = {"/secure/movimientos"})
+@WebServlet(name = "Movimientos", urlPatterns = {"/movimientos"})
 public class Movimientos extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        /*
         MovimientosServicios ms = new MovimientosServicios();
         List<Movimiento> lista = null;
         boolean bole = true;
@@ -87,7 +87,7 @@ public class Movimientos extends HttpServlet {
         if(n_cuenta == null){
             //manda a pagina de inicio
             request.getRequestDispatcher("movimientos.jsp").forward(request, response);
-        }
+        }*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

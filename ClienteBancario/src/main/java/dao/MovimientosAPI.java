@@ -22,8 +22,8 @@ import com.google.api.client.util.GenericData;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Cliente;
 import model.Movimiento;
+import utils.Constantes;
 
 /**
  *
@@ -43,7 +43,7 @@ public class MovimientosAPI
           });
     
     public GenericData data = new GenericData();
-    GenericUrl url = new GenericUrl("http://localhost:8828/ApiServidorJava/rest/apiAlumnos");
+    GenericUrl url = new GenericUrl(Constantes.INGRESOS_Y_REINTEGROS_REST);
     ObjectMapper objectMapper = new ObjectMapper();
     
     public int crearMovimientoDAO(Movimiento mo){//api
@@ -55,7 +55,8 @@ public class MovimientosAPI
             //GenericUrl url = new GenericUrl(Api.END_POINT_ALUMNOS);
             ObjectMapper mapper = new ObjectMapper();
             GenericData data = new GenericData();
-            data.put("cuentaGetSaldo", mapper.writeValueAsString(mo));
+            data.put("crearMovimiento", mapper.writeValueAsString(mo));
+            data.put("op", "crearMovimiento");
 
             HttpRequest requestGoogle = requestFactory.buildPostRequest(url, new UrlEncodedContent(data));
                    

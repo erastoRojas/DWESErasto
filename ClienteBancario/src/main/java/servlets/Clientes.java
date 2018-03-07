@@ -18,7 +18,7 @@ import servicios.ClientesServicios;
  *
  * @author erasto
  */
-@WebServlet(name = "Clientes", urlPatterns = {"/secure/clientes"})
+@WebServlet(name = "Clientes", urlPatterns = {"/clientes"})
 public class Clientes extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

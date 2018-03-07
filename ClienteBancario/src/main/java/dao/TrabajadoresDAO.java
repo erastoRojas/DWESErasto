@@ -53,7 +53,7 @@ public class TrabajadoresDAO {
             filas = stmt.executeUpdate();
             
         } catch (Exception ex) {
-            Logger.getLogger(MovimientosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TrabajadoresDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             db.cerrarConexion(con);
         }

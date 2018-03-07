@@ -18,7 +18,7 @@ import model.Cuenta;
 import model.Movimiento;
 import servicios.IngresosYReintegrosServicios;
 
-import java.time.*;
+
 import java.util.Date;
 import model.Cliente;
 
@@ -26,7 +26,7 @@ import model.Cliente;
  *
  * @author erasto
  */
-@WebServlet(name = "IngresosYReintegros", urlPatterns = {"/secure/ingresosYReintegros"})
+@WebServlet(name = "IngresosYReintegros", urlPatterns = {"/ingresosYReintegros"})// /secure
 public class IngresosYReintegros extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -40,7 +40,7 @@ public class IngresosYReintegros extends HttpServlet {
             
             int importe = Integer.parseInt(request.getParameter("importe"));
             String descripcion = request.getParameter("descripcion");
-            String dni = "11111111A";//request.getParameter("dni");
+            String dni = "11111111A";//request.getParameter("dni");//variable se sesion
 
             Date date = new Date();
 
@@ -198,7 +198,6 @@ public class IngresosYReintegros extends HttpServlet {
             
     }
     
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -240,6 +239,7 @@ public class IngresosYReintegros extends HttpServlet {
     {
         return "Short description";
     }// </editor-fold>
+
     
     public boolean validarCliente(HttpServletRequest request,String n_cuenta){
         

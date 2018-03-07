@@ -33,9 +33,9 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String op = request.getParameter("op");
-        String pass = request.getParameter("pass");
-        String nombre = request.getParameter("nombre");
+        String op = "REGISTRAR";//request.getParameter("op");
+        String pass = "julio";//request.getParameter("pass");
+        String nombre = "angita";//request.getParameter("nombre");
          
         LoginServicios ls = new LoginServicios();
         Trabajador tr = new Trabajador();
@@ -54,7 +54,7 @@ public class Login extends HttpServlet {
                             request.getSession().setAttribute("sesion",true);
                             //variable session con el dni
                             request.setAttribute("usuario", tr.getTr_no());
-                            request.getRequestDispatcher("menuInicio.jsp").forward(request, response);
+                            request.getRequestDispatcher("inicio.jsp").forward(request, response);
                             break;
                         }else{
                             //Contraseña inválida
@@ -79,11 +79,14 @@ public class Login extends HttpServlet {
                     filas = ls.crearTrabajador(tr);
                     
                     if(filas > 0){
-                        response.getWriter().println("Trabajador creado correctamente");
+                        //response.getWriter().println("Trabajador creado correctamente");
+                        request.setAttribute("error", "Usuari ocreado correctamente");
+                        request.getRequestDispatcher("inicio.jsp").forward(request, response);
                     }else{
                         //No se ha podido registrar
                         response.setStatus(500);
-                        response.getWriter().println("No ha sido posible registrar al trabajdor"); 
+                        response.getWriter().println("No ha sido posible registrar al trabajdor");
+                        request.getRequestDispatcher("inicio.jsp").forward(request, response);
                     }
                     
                     break;
