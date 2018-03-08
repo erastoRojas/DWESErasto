@@ -1,38 +1,3 @@
-@rojo: #FF0000;
-
-.errorFormulario{
-    display: none;
-    color: @rojo;
-}
-.errorFecha{
-    display: none;
-    color: @rojo;
-}
-.fecha1Vacia{
-    display: none;
-    color: @rojo; 
-}
-.fecha2Vacia{
-    display: none;
-    color: @rojo; 
-}
-.fecha1mal{
-    display: none;
-    color: @rojo;
-}
-.fecha2mal{
-    display: none;
-    color: @rojo; 
-}
-.errorServlet{
-    color: @rojo;
-}
-
-
-
-//MENU INICIO
-
-
 body{
 	text-align: center;
 }
@@ -105,6 +70,8 @@ nav ul li a{
 #imgInicio{
     margin: 0 auto;
 }
+
+
 
 @media (min-width: 400px) {
   .table-responsive {

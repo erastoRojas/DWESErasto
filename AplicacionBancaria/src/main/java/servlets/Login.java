@@ -55,20 +55,22 @@ public class Login extends HttpServlet {
                     if(tr != null){
                         if(tr.getTr_id().equals(pass)){
                             request.getSession().setAttribute("sesion",true);
-                            //variable session con el dni
+                            request.getSession().setAttribute("dni",tr.getTr_id());
+                            request.getSession().setAttribute("nombre",tr.getTr_no());
+                            
                             request.setAttribute("usuario", tr.getTr_no());
                             request.setAttribute("error", "Bienvenido");
-                            request.getRequestDispatcher("inicio.jsp").forward(request, response);
+                            request.getRequestDispatcher("menuInicio.jsp").forward(request, response);
                             break;
                         }else{
                             //Contraseña inválida
-                            request.setAttribute("error", "Contraseña invalida");
+                            request.setAttribute("error1", "Contraseña invalida");
                             request.getRequestDispatcher("inicio.jsp").forward(request, response);
                             break;
                         }  
                     }else{
                         //El usuario no existe
-                        request.setAttribute("error", "El usuario no existe");
+                        request.setAttribute("error1", "El usuario no existe");
                         request.getRequestDispatcher("inicio.jsp").forward(request, response);
                         break;
                     }
@@ -83,15 +85,15 @@ public class Login extends HttpServlet {
                         filas = ls.crearTrabajador(tr);//llamada a servicios
 
                         if(filas > 0){
-                            request.setAttribute("error", "Trabajador creado correctamente");
+                            request.setAttribute("error2", "Trabajador creado correctamente");
                         }else{
                             //No se ha podido registrar
                             response.setStatus(500);
-                            request.setAttribute("error" , "No ha sido posible registrar al trabajador"); 
+                            request.setAttribute("error2" , "No ha sido posible registrar al trabajador"); 
                         }
                     }else{
                         //El usuario  existe
-                        request.setAttribute("error", "El usuario Existe");
+                        request.setAttribute("error2", "El usuario Existe");
                         request.getRequestDispatcher("inicio.jsp").forward(request, response);
                         break;
                     }
