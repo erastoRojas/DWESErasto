@@ -34,12 +34,14 @@ public class IngresosYReintegros extends HttpServlet {
     
         IngresosYReintegrosServicios ir = new IngresosYReintegrosServicios();
         
-        String n_cuenta = request.getParameter("n_cuenta");
+        String n_cuenta =  request.getParameter("n_cuenta");
 
+        try {
+        
         if(n_cuenta != null){
             
-            int importe = Integer.parseInt(request.getParameter("importe"));
-            String descripcion = request.getParameter("descripcion");
+            int importe =  Integer.parseInt(request.getParameter("importe"));
+            String descripcion =  request.getParameter("descripcion");
             String dni = "11111111A";//request.getParameter("dni");//variable se sesion
 
             Date date = new Date();
@@ -72,7 +74,7 @@ public class IngresosYReintegros extends HttpServlet {
                                 //modifica saldo tabla cuentas
                                 cu.setCu_sal(importe + cu.getCu_sal());
                                 filas = ir.updateCuenta(cu);
-                                if(filas == 0){
+                                if(filas <= 0){
                                     //Error al actualizar el saldo
                                     bole = false;
                                     response.setStatus(500);
@@ -89,7 +91,7 @@ public class IngresosYReintegros extends HttpServlet {
                                     //Error al modificar el saldo en cliente
                                     bole = false;
                                     response.setStatus(500);
-                                    response.getWriter().println("Error al actualizar el saldo en la tabla clientes");
+                                    response.getWriter().println("Error al actualizar el saldo en la tabla clientes ingreso");
                                     break;
                                 }
                                 //crea movimiento
@@ -105,7 +107,7 @@ public class IngresosYReintegros extends HttpServlet {
                                     //Error al insertar el movimiento
                                     bole = false;
                                     response.setStatus(500);
-                                    response.getWriter().println("Error al insertar el movimiento en la tabla movimientos");
+                                    response.getWriter().println("Error al insertar el movimiento en la tabla movimientos ingresos");
                                     break;
                                 }
                                 
@@ -125,15 +127,14 @@ public class IngresosYReintegros extends HttpServlet {
                                     response.setStatus(500);
                                     response.getWriter().println("No tienes suficiente dinero para retirar");
                                 }else{
-                                    
                                     //modifica saldo tabla cuentas
                                     CuentaAux.setCu_sal(CuentaAux.getCu_sal() - importe);
                                     filas = ir.updateCuenta(CuentaAux);
-                                    if(filas == 0){
+                                    if(filas <= 0){
                                         //Error al actualizar el saldo
                                         bole = false;
                                         response.setStatus(500);
-                                        response.getWriter().println("Error al actualizar el saldo en la tabla cuentas");
+                                        response.getWriter().println("Error al actualizar el saldo en la tabla cuentas reintegro");
                                         break;
                                     }
                                     //modifica saldo cliente o clientes tabla clientes
@@ -161,7 +162,7 @@ public class IngresosYReintegros extends HttpServlet {
                                         //Error al insertar el movimiento
                                         bole = false;
                                         response.setStatus(500);
-                                        response.getWriter().println("Error al insertar el movimiento en la tabla movimientos");
+                                        response.getWriter().println("Error al insertar el movimiento en la tabla movimientos reintegro");
                                         break;
                                     }
 
@@ -189,6 +190,20 @@ public class IngresosYReintegros extends HttpServlet {
                 response.setStatus(500);
                 response.getWriter().println("Mal formato de cuenta");
             }
+        }
+        } catch (Exception ex) {
+            if (ex.getMessage().contains("401")) {
+                response.getWriter().println("401");
+                request.setAttribute("error", "Se ha superado la cuota establecida");
+                
+            } else if (ex.getMessage().contains("503")) {
+                response.getWriter().println("503");
+                
+            } else {
+                request.setAttribute("error", "Ha ocurrido un error");
+            }
+
+            
         }
         
         if(n_cuenta == null){

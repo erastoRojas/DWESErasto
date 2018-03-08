@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <h1>Ingresos y Reintegros</h1>
-                    <form id="formulario" onsubmit="return validarCliente();">
+                    <form id="formulario" onsubmit="return validarCliente();" action="">
                         <p>Elige una opción:</p>
                         <div class="radio">
                           <label><input type="radio" name="op" value="INGRESO" id="ingreso" class="ingreso">Ingreso</label>

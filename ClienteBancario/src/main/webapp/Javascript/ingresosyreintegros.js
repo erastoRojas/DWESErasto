@@ -55,6 +55,9 @@ $(document).ready(function(){//cuando el documento se cargue
             
             if(continuar){
             
+            document.getElementById("formulario").style.action = "http://localhost:8282/ClienteBancario/IngresosYReintegros";
+            
+            
             $.ajax({
             type: 'POST',
             url: "http://localhost:8282/ClienteBancario/ingresosYReintegros",

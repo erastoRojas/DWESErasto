@@ -16,6 +16,8 @@ import com.google.api.client.http.HttpResponseException;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.UrlEncodedContent;
 import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.http.json.JsonHttpContent;
+import com.google.api.client.json.GenericJson;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.jackson2.JacksonFactory;
@@ -54,9 +56,11 @@ public Cuenta getCuentaDAO(Cuenta cu) {
         try{
         
             ObjectMapper mapper = new ObjectMapper();
-            GenericData data = new GenericData();
-            data.put("getCuenta", mapper.writeValueAsString(cu));
-            data.put("op", "getCuenta");
+            //GenericData data = new GenericData();
+            //data.put("getCuenta", mapper.writeValueAsString(cu));
+            //data.put("op", "getCuenta");
+            url.set("getCuenta",objectMapper.writeValueAsString(cu));
+            url.set("op", "getCuenta");
             
             HttpRequest requestGoogle = requestFactory.buildGetRequest(url);          
             //requestGoogle.getHeaders().set("API_KEY", "sadfsdf");
@@ -79,9 +83,11 @@ public Cuenta getCuentaDAO(Cuenta cu) {
         try {
             
             ObjectMapper mapper = new ObjectMapper();
-            GenericData data = new GenericData();
-            data.put("getSaldo", mapper.writeValueAsString(cu));
-            data.put("op", "getSaldo");
+            //GenericData data = new GenericData();
+            //data.put("getSaldo", mapper.writeValueAsString(cu));
+            //data.put("op", "getSaldo");
+            url.set("getSaldo",objectMapper.writeValueAsString(cu));
+            url.set("op", "getSaldo");
 
             HttpRequest requestGoogle = requestFactory.buildGetRequest(url);          
             //requestGoogle.getHeaders().set("API_KEY", "sadfsdf");
@@ -100,26 +106,32 @@ public Cuenta getCuentaDAO(Cuenta cu) {
     
     public int updateCuentaDAO(Cuenta cu){//api
         
-        Cuenta cuenta = null;
+        //Cuenta cuenta = null;
         int aux = 0;
         
         try {
             //GenericUrl url = new GenericUrl(Api.END_POINT_ALUMNOS);
             ObjectMapper mapper = new ObjectMapper();
-            GenericData data = new GenericData();
-            data.put("cuentaGetSaldo", mapper.writeValueAsString(cu));
-
-            HttpRequest requestGoogle = requestFactory.buildPostRequest(url, new UrlEncodedContent(data));
+            //GenericData data = new GenericData();
+            //data.put("updateCuenta", mapper.writeValueAsString(cu));
+            //data.put("op", "updateCuenta");
+            
+            url.set("updateCuenta",objectMapper.writeValueAsString(cu));
+            url.set("op", "updateCuenta");
+            
+            
+            HttpRequest requestGoogle = requestFactory.buildPostRequest(url, new JsonHttpContent(new JacksonFactory(), cu));
                    
-            HttpResponse response = requestGoogle.execute();
-            cuenta = mapper.readValue(response.getContent(), Cuenta.class);//pasar esto a entero
-
-            /////////////
-            if(cuenta != null){
-                aux = 1;
-            }else{
-                aux = -1;
-            }
+            //HttpResponse response = requestGoogle.execute();
+            //cuenta = mapper.readValue(response.getContent(), Cuenta.class);//pasar esto a entero
+            
+            GenericJson gj = requestGoogle.execute().parseAs(GenericJson.class);
+            String hola =  (String)gj.toString();
+            
+            //////////////*
+            
+            aux = Integer.parseInt(hola);
+            
             
         } catch (HttpResponseException ex) {
             Logger.getLogger(CuentasAPI.class.getName()).log(Level.SEVERE, null, ex);
