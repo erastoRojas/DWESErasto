@@ -125,7 +125,7 @@ public class IngresosYReintegros extends HttpServlet {
                                     response.setStatus(500);
                                     response.getWriter().println("No tienes suficiente dinero para retirar");
                                 }else{
-                                    
+  
                                     //modifica saldo tabla cuentas
                                     CuentaAux.setCu_sal(CuentaAux.getCu_sal() - importe);
                                     filas = ir.updateCuenta(CuentaAux);

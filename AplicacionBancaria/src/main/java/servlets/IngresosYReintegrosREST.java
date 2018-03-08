@@ -62,13 +62,13 @@ public class IngresosYReintegrosREST extends HttpServlet
                             //MensajeHttp info = new MensajeHttp("Alumno modificado correctamente");
                             request.setAttribute("json", getCliente); 
                         }else{
-                            //status??
-                            MensajeHttp info = new MensajeHttp("Ha habido un error");
+                            response.setStatus(503);
+                            MensajeHttp info = new MensajeHttp("error case getCliente");
                             request.setAttribute("json", info);
                         }
                     }else{
-                        //status??
-                        MensajeHttp info = new MensajeHttp("Ha habido un error");
+                        response.setStatus(503);
+                        MensajeHttp info = new MensajeHttp("error case getCliente2");
                         request.setAttribute("json", info);
                     }
                     
@@ -84,14 +84,14 @@ public class IngresosYReintegrosREST extends HttpServlet
                             //MensajeHttp info = new MensajeHttp("Alumno modificado correctamente");
                             request.setAttribute("json", getCuenta);
                         }else{
-                            //status??
-                            MensajeHttp info = new MensajeHttp("Ha habido un error");
+                            response.setStatus(503);
+                            MensajeHttp info = new MensajeHttp("error getCuenta");
                             request.setAttribute("json", info);
                         }
 
                     }else{
-                        //status??
-                        MensajeHttp info = new MensajeHttp("Ha habido un error");
+                        response.setStatus(503);
+                        MensajeHttp info = new MensajeHttp("error getCuenta2");
                         request.setAttribute("json", info);
                     }
                     
@@ -107,14 +107,14 @@ public class IngresosYReintegrosREST extends HttpServlet
                             //MensajeHttp info = new MensajeHttp("Alumno modificado correctamente");
                             request.setAttribute("json", getSaldo);
                         }else{
-                            //status??
-                            MensajeHttp info = new MensajeHttp("Ha habido un error");
+                            response.setStatus(503);
+                            MensajeHttp info = new MensajeHttp("error getSaldo");
                             request.setAttribute("json", info);
                         }
 
                     }else{
-                        //status??
-                        MensajeHttp info = new MensajeHttp("Ha habido un error");
+                        response.setStatus(503);
+                        MensajeHttp info = new MensajeHttp("error getSaldo2");
                         request.setAttribute("json", info);
                     }
                     
@@ -136,6 +136,7 @@ public class IngresosYReintegrosREST extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
+        Cuenta updateCuenta = (Cuenta) request.getAttribute("updateCuenta");
         Cliente updateCliente = (Cliente) request.getAttribute("updateCliente");
         Movimiento crearMovimiento = (Movimiento) request.getAttribute("crearMovimiento");
         String op = (String) request.getAttribute("op");
@@ -145,6 +146,29 @@ public class IngresosYReintegrosREST extends HttpServlet
         if (op != null){    
             switch (op) {
         
+                case "updateCuenta":
+                    
+                    if(updateCuenta != null){
+            
+                        lineas = ir.updateCuenta(updateCuenta);//no sera mejor devolver un boolean
+
+                        if(lineas > 0){
+                            //MensajeHttp info = new MensajeHttp("Alumno modificado correctamente");
+                            request.setAttribute("json", lineas);
+                        }else{
+                            response.setStatus(503);
+                            MensajeHttp info = new MensajeHttp("error updateCuenta");
+                            request.setAttribute("json", info);
+                        }
+
+                    }else{
+                        response.setStatus(503);
+                        MensajeHttp info = new MensajeHttp("errorUpdateCuenta 2");
+                        request.setAttribute("json", info);
+                    }
+                    
+                break;
+                    
                 case "updateCliente":
                     
                     if(updateCliente != null){
@@ -155,41 +179,41 @@ public class IngresosYReintegrosREST extends HttpServlet
                             //MensajeHttp info = new MensajeHttp("Alumno modificado correctamente");
                             request.setAttribute("json", updateCliente);
                         }else{
-                            //status??
-                            MensajeHttp info = new MensajeHttp("Ha habido un error");
+                            response.setStatus(503);
+                            MensajeHttp info = new MensajeHttp("error updateCliente");
                             request.setAttribute("json", info);
                         }
 
                     }else{
-                        //status??
-                        MensajeHttp info = new MensajeHttp("Ha habido un error");
+                        response.setStatus(503);
+                        MensajeHttp info = new MensajeHttp("error updateCliente2");
                         request.setAttribute("json", info);
                     }
                     
-                    break;
+                break;    
                     
-                    case "crearMovimiento":
-                    
-                    if(crearMovimiento != null){
-            
-                        lineas = ir.crearMovimiento(crearMovimiento);//no sera mejor devolver un boolean
+                case "crearMovimiento":
 
-                        if(lineas > 0){
-                            //MensajeHttp info = new MensajeHttp("Alumno modificado correctamente");
-                            request.setAttribute("json", crearMovimiento);
-                        }else{
-                            //status??
-                            MensajeHttp info = new MensajeHttp("Ha habido un error");
-                            request.setAttribute("json", info);
-                        }
+                if(crearMovimiento != null){
 
+                    lineas = ir.crearMovimiento(crearMovimiento);//no sera mejor devolver un boolean
+
+                    if(lineas > 0){
+                        //MensajeHttp info = new MensajeHttp("Alumno modificado correctamente");
+                        request.setAttribute("json", crearMovimiento);
                     }else{
-                        //status??
-                        MensajeHttp info = new MensajeHttp("Ha habido un error");
+                        response.setStatus(503);
+                        MensajeHttp info = new MensajeHttp("error crearMovimiento");
                         request.setAttribute("json", info);
                     }
-                    
-                    break;
+
+                }else{
+                    response.setStatus(503);
+                    MensajeHttp info = new MensajeHttp("error crearMovimiento2");
+                    request.setAttribute("json", info);
+                }
+
+                break;
             }
         }
         

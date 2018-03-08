@@ -85,6 +85,11 @@ public class FilterJson implements Filter {
             request.setAttribute("crearMovimiento", mv);
         }
         
+        String op = request.getParameter("op");
+        if(op != null){
+            request.setAttribute("op", op);
+        }
+        
         // Write code here to process the request and/or response before
         // the rest of the filter chain is invoked.
         // For example, a logging filter might log items on the request object,
