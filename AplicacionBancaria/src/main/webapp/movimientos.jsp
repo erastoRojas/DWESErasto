@@ -55,7 +55,7 @@
                         <a class="navbar-brand" href="http://localhost:8282/AplicacionBancaria/menuInicio.jsp">Home</a>
                     </div>                
                       <ul class="nav navbar-nav">
-                        <li><a href="#">Apertura Cuentas</a></li>
+                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/movimientos">Movimientos</a></li>
                         <li><a href="#">Borrar Cuenta</a></li>
@@ -93,7 +93,7 @@
                                 <span id="fecha2mal" class="fecha2mal">La fecha no puede ser posterior a la actual</span>
                             </div>
                         </div>
-                        <input type="button" id="botonListado" name="botonListado" value="Enviar"/>
+                        <input class="btn btn-primary" type="button" id="botonListado" name="botonListado" value="Enviar"/>
                     </form>
                 </div>
                 <div class="col-sm-8"><br><br>

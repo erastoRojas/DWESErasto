@@ -57,7 +57,7 @@
                         <a class="navbar-brand" href="#">Home</a>
                     </div>
                       <ul class="nav navbar-nav">
-                        <li><a href="#">Apertura Cuentas</a></li>
+                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/movimientos">Movimientos</a></li>
                         <li><a href="#">Borrar Cuenta</a></li>

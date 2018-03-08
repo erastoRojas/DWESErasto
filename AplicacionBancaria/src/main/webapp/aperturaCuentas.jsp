@@ -6,6 +6,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="/Javascript/aperturaCuentas.js"></script>
         <title>Apertura Cuenta</title>
     </head>
     
@@ -15,7 +16,7 @@
                 
                 var error = false;
                 var n_cuenta = document.getElementById("n_cuenta").value;
-                var cl_dni = document.getElementById("cl_dni").value;
+                var cl_dni = document.getElementById("dni").value;
                 var correcto = 0;
                 var reg_cuenta = new RegExp("^[0-9]{10}$");
                 var reg_dni = new RegExp("^[0-9]{8}[a-z]$");
@@ -52,15 +53,11 @@
                     <form onsubmit="return comprobarCliente();">
                         <div class="form-group">       
                             <label><b>Introduce nº de cuenta:</b></label>
-                            <input type="text" id="n_cuenta" name="nombre" class="form-control"/>
+                            <input type="text" id="n_cuenta" name="n_cuenta" class="form-control"/>
                         </div>
                         <div class="form-group"> 
                             <label><b>Introduce DNI:</b></label>
-                            <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <label><b>Fecha fin:</b></label>
-                            <input type="date" id="fecha_fin" name="fecha_fin" class="form-control">
+                            <input type="text" id="dni" name="dni" class="form-control"/>
                         </div>
                         <button id="comprobacion" type="button" class="btn btn-primary">Submit</button>
                     </form>

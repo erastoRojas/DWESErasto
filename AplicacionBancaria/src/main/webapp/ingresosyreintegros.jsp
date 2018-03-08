@@ -57,7 +57,7 @@
                         <a class="navbar-brand" href="http://localhost:8282/AplicacionBancaria/menuInicio.jsp">Home</a>
                     </div>                
                       <ul class="nav navbar-nav">
-                        <li><a href="#">Apertura Cuentas</a></li>
+                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/movimientos">Movimientos</a></li>
                         <li><a href="#">Borrar Cuenta</a></li>
@@ -101,7 +101,7 @@
                         <textarea class="form-control" rows="5" id="descripcion" name="descripcion" required></textarea>
                         <span id="errorTexto" class="errorTexto">Debe añadir una descripción</span>
                     </div>
-                    <input type="button" id="botonListado" value="Buscar"/>
+                    <input class="btn btn-primary" type="button" id="botonListado" value="Buscar"/>
                 </form>
             </div>
                
