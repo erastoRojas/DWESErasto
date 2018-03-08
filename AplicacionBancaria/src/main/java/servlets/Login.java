@@ -36,7 +36,9 @@ public class Login extends HttpServlet {
         String op = request.getParameter("op");
         String pass =  request.getParameter("pass");
         String nombre = request.getParameter("nombre");
-         
+        
+        Boolean bole = false; 
+        
         if (op != null){  
             
             LoginServicios ls = new LoginServicios();
@@ -60,7 +62,9 @@ public class Login extends HttpServlet {
                             
                             request.setAttribute("usuario", tr.getTr_no());
                             request.setAttribute("error", "Bienvenido");
-                            request.getRequestDispatcher("menuInicio.jsp").forward(request, response);
+                            
+                            bole = true;
+                            
                             break;
                         }else{
                             //Contraseña inválida
@@ -107,8 +111,12 @@ public class Login extends HttpServlet {
                 break;    
             }
         }
-                   
-         request.getRequestDispatcher("inicio.jsp").forward(request, response);           
+        
+        if(bole){
+            request.getRequestDispatcher("menuInicio.jsp").forward(request, response);    
+        }else{
+            request.getRequestDispatcher("inicio.jsp").forward(request, response);  
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

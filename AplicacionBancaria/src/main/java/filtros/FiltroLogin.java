@@ -102,7 +102,7 @@ public class FiltroLogin implements Filter {
       throws IOException, ServletException {
     }
     
-    @Override
+    //@Override
     public void doFilter(ServletRequest request, ServletResponse response,
       FilterChain chain)
       throws IOException, ServletException {
@@ -120,7 +120,7 @@ public class FiltroLogin implements Filter {
 
                 chain.doFilter(request, response);
             } else {
-                request.getRequestDispatcher("/login.jsp").forward(request, response);
+                request.getRequestDispatcher("/inicio.jsp").forward(request, response);
             }
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,

@@ -26,7 +26,7 @@ import model.Cliente;
  *
  * @author erasto                                             
  */
-@WebServlet(name = "IngresosYReintegros", urlPatterns = {"/ingresosYReintegros"})// /secure
+@WebServlet(name = "IngresosYReintegros", urlPatterns = {"/secure/ingresosYReintegros"})
 public class IngresosYReintegros extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -193,7 +193,7 @@ public class IngresosYReintegros extends HttpServlet {
         
         if(n_cuenta == null){
             //manda a pagina de inicio
-            request.getRequestDispatcher("ingresosyreintegros.jsp").forward(request, response);
+            request.getRequestDispatcher("/ingresosyreintegros.jsp").forward(request, response);
         }
             
     }

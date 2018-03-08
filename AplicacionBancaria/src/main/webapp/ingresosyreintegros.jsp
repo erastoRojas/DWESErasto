@@ -19,8 +19,10 @@
         <meta name="description" content="Proyecto Aplicacion Bancaria"> 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        
         <link rel="stylesheet/less" type="text/css" href="less/lessIngresosYReintegros.less" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        
         <!--<link rel="stylesheet" href="css/cssMovimientos.css" type="text/css">-->
         
         <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.0/less.min.js" ></script>        
@@ -56,8 +58,8 @@
                     </div>                
                       <ul class="nav navbar-nav">
                         <li><a href="#">Apertura Cuentas</a></li>
-                        <li><a href="http://localhost:8282/AplicacionBancaria/ingresosYReintegros">Ingresos y Reintegros</a></li>
-                        <li><a href="http://localhost:8282/AplicacionBancaria/movimientos">Movimientos</a></li>
+                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
+                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/movimientos">Movimientos</a></li>
                         <li><a href="#">Borrar Cuenta</a></li>
                       </ul>
                     </div>
