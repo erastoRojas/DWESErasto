@@ -71,10 +71,12 @@
                 <div class="col-sm-8">
                     <h1>Movimientos</h1>
                     <form id="formulario" onsubmit="return validarCliente();">
-                        <div class="form-group">       
-                            <label><b>nº Cuenta:</b></label>
-                            <input type="text" id="n_cuenta" name="n_cuenta" class="form-control"/>
-                            <span id="errorCuenta" class="errorFormulario">El numero de cuenta no es correcto</span>
+                        <div class="col-sm-12">
+                            <div class="form-group">       
+                                <label><b>nº Cuenta:</b></label>
+                                <input type="text" id="n_cuenta" name="n_cuenta" class="form-control"/>
+                                <span id="errorCuenta" class="errorFormulario">El numero de cuenta no es correcto</span>
+                            </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group"> 
@@ -93,7 +95,11 @@
                                 <span id="fecha2mal" class="fecha2mal">La fecha no puede ser posterior a la actual</span>
                             </div>
                         </div>
-                        <input class="btn btn-primary" type="button" id="botonListado" name="botonListado" value="Enviar"/>
+                        <div class="col-sm-5 col-5">
+                        </div>
+                        <div class="col-sm-7 col-7">
+                            <input class="btn btn-primary" type="button" id="botonListado" name="botonListado" value="Enviar"/>
+                        </div>
                     </form>
                 </div>
                 <div class="col-sm-8"><br><br>

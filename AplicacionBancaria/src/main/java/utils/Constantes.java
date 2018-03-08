@@ -11,4 +11,9 @@ package utils;
  */
 public class Constantes {
     
+    public static final String URLaperturaCuenta = "http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas";
+    public static final String URLingresosYreintegros = "http://localhost:8282/AplicacionBancaria/secure/ingresosYReintegros";
+    public static final String URLmovimientos = "http://localhost:8282/AplicacionBancaria/secure/movimientos";
+    public static final String URLborrarCuenta = "http://localhost:8282/AplicacionBancaria/secure/borrarCuenta";
+    public static final String URLmenuInicio = "http://localhost:8282/AplicacionBancaria/menuInicio.jsp";
 }

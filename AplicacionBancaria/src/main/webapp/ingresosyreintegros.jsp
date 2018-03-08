@@ -20,7 +20,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
         
-        <link rel="stylesheet/less" type="text/css" href="less/lessIngresosYReintegros.less" />
+        <link rel="stylesheet/less" type="text/css" href="/less/lessIngresosYReintegros.less" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         
         <!--<link rel="stylesheet" href="css/cssMovimientos.css" type="text/css">-->
