@@ -20,7 +20,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
         
-        <link rel="stylesheet/less" type="text/css" href="/less/lessIngresosYReintegros.less" />
+        <link rel="stylesheet/less" type="text/css" href="/AplicacionBancaria/less/lessIngresosYReintegros.less" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         
         <!--<link rel="stylesheet" href="css/cssMovimientos.css" type="text/css">-->
@@ -29,7 +29,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-        <script src="Javascript/ingresosyreintegros.js"></script>
+        <script src="/AplicacionBancaria/Javascript/ingresosyreintegros.js"></script>
     </head>
     
             
@@ -38,7 +38,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-4 col-lg-3 headera">
-                    <img alt="logo-boy" class="img-responsive" src="img/logo-boy-2.png" id="imgInicio">
+                    <img alt="logo-boy" class="img-responsive" src="/AplicacionBancaria/img/logo-boy-2.png" id="imgInicio">
                 </div>
                 <div class="col-12 col-md-8 col-lg-9 headera">
                     <h1>Aplicación Bancaria</h1>
@@ -54,12 +54,12 @@
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="http://localhost:8282/AplicacionBancaria/menuInicio.jsp">Home</a>
+                        <a class="navbar-brand" href="http://localhost:8080/AplicacionBancaria/menuInicio.jsp">Home</a>
                     </div>                
                       <ul class="nav navbar-nav">
-                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
-                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
-                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/movimientos">Movimientos</a></li>
+                        <li><a href="http://localhost:8080/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
+                        <li><a href="http://localhost:8080/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
+                        <li><a href="http://localhost:8080/AplicacionBancaria/secure/movimientos">Movimientos</a></li>
                         <li><a href="#">Borrar Cuenta</a></li>
                       </ul>
                     </div>
@@ -108,7 +108,7 @@
         </div>
     </div> 
         <footer id="futer">
-            <div id="cerrar"><a href="http://localhost:8282/AplicacionBancaria/login?op=CERRAR">Cerrar Aplicación</a></div>
+            <div id="cerrar"><a href="http://localhost:8080/AplicacionBancaria/login?op=CERRAR">Cerrar Aplicación</a></div>
         </footer>
     </body>
 </html>

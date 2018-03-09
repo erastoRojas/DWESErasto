@@ -1,5 +1,5 @@
 <%-- 
-    @author Erasto Rojas Sánchez
+    @author Erasto Rojas SÃ¡nchez
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -44,7 +44,7 @@
                 
                 if(reg_cuenta.test(n_cuenta)){//comprueba la cadena n_cuenta
                     
-                    var sub = n_cuenta.substr(9,1);//recoge el ultimo dígito  
+                    var sub = n_cuenta.substr(9,1);//recoge el ultimo dÃ­gito  
                     var n_cuenta_aux = 0;
 
                     for(var i = 0; i<n_cuenta.length-1;i++){//suma los 9 primeros digitos de la cadena
@@ -73,7 +73,7 @@
                     <img alt="logo-boy" class="img-responsive" src="img/logo-boy-2.png" id="imgInicio">
                 </div>
                 <div class="col-12 col-md-8 col-lg-9 headera">
-                    <h1>Aplicación Bancaria</h1>
+                    <h1>AplicaciÃ³n Bancaria</h1>
                     <p>Bienvenido</p>
                     <div><a href="#"><span>${nombre}</span></a></div>
                 </div> 
@@ -86,12 +86,12 @@
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="http://localhost:8282/AplicacionBancaria/menuInicio.jsp">Home</a>
+                        <a class="navbar-brand" href="http://localhost:8080/AplicacionBancaria/menuInicio.jsp">Home</a>
                     </div>                
                       <ul class="nav navbar-nav">
-                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
-                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
-                        <li><a href="'utils.Constantes.URLmovimientos'">Movimientos</a></li>
+                        <li><a href="http://localhost:8080/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
+                        <li><a href="http://localhost:8080/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
+                        <li><a href="${utils.Constantes.URLmovimientos}">Movimientos</a></li>
                         <li><a href="#">Borrar Cuenta</a></li>
                       </ul>
                     </div>
@@ -105,7 +105,7 @@
                     <h1>Apertura Cuenta</h1>
                     <form onsubmit="return comprobarCliente();">
                         <div class="form-group">       
-                            <label><b>Introduce nº de cuenta:</b></label>
+                            <label><b>Introduce nÂº de cuenta:</b></label>
                             <input type="text" id="n_cuenta" name="n_cuenta" class="form-control"/>
                         </div>
                         <div class="form-group"> 

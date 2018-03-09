@@ -10,4 +10,4 @@
 driverDB: com.mysql.jdbc.Driver
 urlDB: jdbc:mysql://localhost/banco?useSSL=false
 userDB: root
-passDB: nohay2sin3
+#passDB: nohay2sin3

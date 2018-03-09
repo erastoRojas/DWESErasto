@@ -71,7 +71,7 @@ function funcion(){
        
         $.ajax({
         type: 'POST',
-        url: "http://localhost:8282/AplicacionBancaria/movimientos",
+        url: "http://localhost:8080/AplicacionBancaria/secure/movimientos",
         data: $("#formulario").serialize(),
         
         success: function(data){
@@ -80,8 +80,10 @@ function funcion(){
                 var cont2 = 0;
                 
                 $("#tabla").empty();
+                $("#tabla").addClass("table");
+                $("#tabla").addClass("table-striped");
                 document.getElementById("errorServlet").style.display = "none";
-                $("#tabla").append("<tr><th>Fecha</th><th>Hora</th><th>Descripcion</th><th>Importe</th><th>Saldo</th></tr>");
+                $("#tabla").append("<tbody><tr><th>Fecha</th><th>Hora</th><th>Descripcion</th><th>Importe</th><th>Saldo</th></tr></tbody>");
                 
                 for(var i = 0;i<datos.length;i++){
                     
