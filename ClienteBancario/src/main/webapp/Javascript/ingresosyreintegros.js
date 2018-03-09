@@ -55,12 +55,12 @@ $(document).ready(function(){//cuando el documento se cargue
             
             if(continuar){
             
-            document.getElementById("formulario").style.action = "http://localhost:8282/ClienteBancario/IngresosYReintegros";
+            document.getElementById("formulario").style.action = "http://localhost:8080/ClienteBancario/IngresosYReintegros";
             
             
             $.ajax({
             type: 'POST',
-            url: "http://localhost:8282/ClienteBancario/ingresosYReintegros",
+            url: "http://localhost:8080/ClienteBancario/ingresosYReintegros",
             data: $("#formulario").serialize(),
 
             success: function(data){

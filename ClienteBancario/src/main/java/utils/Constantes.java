@@ -10,7 +10,7 @@ package utils;
  * @author daw
  */
 public class Constantes {
-    public static final String INGRESOS_Y_REINTEGROS_REST = "http://localhost:8282/AplicacionBancaria/rest/IngresosYReintegrosREST";
+    public static final String INGRESOS_Y_REINTEGROS_REST = "http://localhost:8080/AplicacionBancaria/rest/IngresosYReintegrosREST";
    
     
 }
