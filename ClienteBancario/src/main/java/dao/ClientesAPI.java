@@ -90,14 +90,14 @@ public class ClientesAPI
         try {
             //GenericUrl url = new GenericUrl(Api.END_POINT_ALUMNOS);
             ObjectMapper mapper = new ObjectMapper();
-            //GenericData data = new GenericData();
-            //data.put("updateCliente", mapper.writeValueAsString(cl));
-            //data.put("op", "updateCliente");
+            GenericData data = new GenericData();
+            data.put("updateCliente", mapper.writeValueAsString(cl));
+            data.put("op", "updateCliente");
             
-            url.set("updateCliente",objectMapper.writeValueAsString(cl));
-            url.set("op", "updateCliente");
+            //url.set("updateCliente",objectMapper.writeValueAsString(cl));
+            //url.set("op", "updateCliente");
             
-            HttpRequest requestGoogle = requestFactory.buildPostRequest(url, new JsonHttpContent(new JacksonFactory(), cl));
+            HttpRequest requestGoogle = requestFactory.buildPostRequest(url,  new UrlEncodedContent(data));
                    
             //HttpResponse response = requestGoogle.execute();
             //cliente = mapper.readValue(response.getContent(), Cliente.class);//pasar esto a entero

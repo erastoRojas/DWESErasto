@@ -33,7 +33,7 @@ function comprobarCliente(){
 $(document).ready(function(){//carga la funcion cuando cargue el documento
     $("#comprobacion").click(function(){//onclick en comprobacion
         if(comprobarMovimientos()){//si la funcion que comprueba el cliente devuelve true:
-            $.post("http://localhost:8282/AplicacionBancaria/Movimientos",$("#datos").serialize(),//manda los datos del formulario via post 
+            $.post("http://localhost:8080/AplicacionBancaria/Movimientos",$("#datos").serialize(),//manda los datos del formulario via post 
                 function(data,status){//esta funcion recoge la respuesta del sevidor
                     
                     var datos = JSON.parse(data);

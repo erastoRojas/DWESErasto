@@ -112,15 +112,15 @@ public Cuenta getCuentaDAO(Cuenta cu) {
         try {
             //GenericUrl url = new GenericUrl(Api.END_POINT_ALUMNOS);
             ObjectMapper mapper = new ObjectMapper();
-            //GenericData data = new GenericData();
-            //data.put("updateCuenta", mapper.writeValueAsString(cu));
-            //data.put("op", "updateCuenta");
+            GenericData data = new GenericData();
+            data.put("updateCuenta", mapper.writeValueAsString(cu));
+            data.put("op", "updateCuenta");
             
             url.set("updateCuenta",objectMapper.writeValueAsString(cu));
             url.set("op", "updateCuenta");
             
             
-            HttpRequest requestGoogle = requestFactory.buildPostRequest(url, new JsonHttpContent(new JacksonFactory(), cu));
+            HttpRequest requestGoogle = requestFactory.buildPostRequest(url,  new UrlEncodedContent(data));
                    
             //HttpResponse response = requestGoogle.execute();
             //cuenta = mapper.readValue(response.getContent(), Cuenta.class);//pasar esto a entero
