@@ -245,8 +245,6 @@ public class IngresosYReintegros extends HttpServlet {
         
         int cont = 0;
         int suma_num = 0;
-        String foo = n_cuenta.substring(9,10);
-        int ult_num = Integer.parseInt(foo);
         boolean bole = true;
         
         for(int i = 0; i < n_cuenta.length()-1; i++){
@@ -255,8 +253,13 @@ public class IngresosYReintegros extends HttpServlet {
         }
         if((cont+1) != 10){
             bole = false;
-        }else if(suma_num % 9 != ult_num){
-            bole = false;
+        }else{
+            String foo = n_cuenta.substring(9,10);
+            int ult_num = Integer.parseInt(foo);
+            
+            if(suma_num % 9 != ult_num){
+                bole = false;
+            }
         }   
         return bole;
     }

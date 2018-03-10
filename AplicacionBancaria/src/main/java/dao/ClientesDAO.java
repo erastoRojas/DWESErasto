@@ -85,5 +85,34 @@ public class ClientesDAO {
         }
         return filas;
     }
+
+    public int insertClienteDAO(Cliente cl) {
+        
+        DBConnection db = new DBConnection();
+        Connection con = null;
+        int filas = 0;
+        try {
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO CLIENTES (cl_dni,cl_nom,cl_dir,cl_tel,cl_ema,cl_fna,cl_fcl,cl_ncu,cl_sal) "
+                                                        + "VALUES(?,?,?,?,?,?,?,?,?)");                                       
+            stmt.setString(1, cl.getCl_dni());
+            stmt.setString(2, cl.getCl_nom());
+            stmt.setString(3, cl.getCl_dir());
+            stmt.setString(4, cl.getCl_tel());
+            stmt.setString(5, cl.getCl_ema());
+            stmt.setDate(6, new java.sql.Date(cl.getCl_fna().getTime()));
+            stmt.setDate(7, new java.sql.Date(cl.getCl_fcl().getTime()));
+            stmt.setInt(8,cl.getCl_ncu());
+            stmt.setInt(9,cl.getCl_sal());
+            
+            filas = stmt.executeUpdate();
+            
+        } catch (Exception ex) {
+            Logger.getLogger(MovimientosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.cerrarConexion(con);
+        }
+        return filas;  
+    }
     
 }

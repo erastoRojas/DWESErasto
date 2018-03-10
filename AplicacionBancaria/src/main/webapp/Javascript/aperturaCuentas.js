@@ -1,66 +1,97 @@
-function comprobarCliente(){
-                
-    var n_cuenta = document.getElementById("n_cuenta").value;
-    var cl_dni = document.getElementById("cl_dni").value;
-    var reg_cuenta = new RegExp("^[0-9]{10}$");
-    var reg_dni = new RegExp("^[0-9]{8}[a-z]$");
-    var error = false;
-    var sub = n_cuenta.substr(9,1);//recoge el ultimo dígito  
-    var n_cuenta_aux = 0;
+function opcionTitular(lista){
+    if(lista.options[lista.selectedIndex].value == 1){
+        document.getElementById("opciones2Titular").style.display = "block"; 
+    }
+    if(lista.options[lista.selectedIndex].value == 0){
+        document.getElementById("opciones2Titular").style.display = "none"; 
+    }
     
-    for(var i = 0; i<n_cuenta.length-1;i++){//suma los 9 primeros digitos de la cadena
-            n_cuenta_aux += n_cuenta.charAt(i);
-    }
-    var resto = n_cuenta_aux % 9;//saca el resto de la division
-    
-    if(!reg_cuenta.test(n_cuenta)){//comprueba la cadena n_cuenta
-        error = true;
-    }
-     
-    if(resto != sub){//compara el resto
-        error = true;
-    }
-
-    if(!reg_dni.test(cl_dni)){//comprueba dni 
-        error = true;
-    }
-
-    if(error == true){
-        return true;
-    }else{return false;}
 }
-//AJAX 
-$(document).ready(function(){//carga la funcion cuando cargue el documento
-    $("#comprobacion").click(function(){//onclick en comprobacion
-        if(comprobarMovimientos()){//si la funcion que comprueba el cliente devuelve true:
-            $.post("http://localhost:8282/AplicacionBancaria/Movimientos",$("#datos").serialize(),//manda los datos del formulario via post 
-                function(data,status){//esta funcion recoge la respuesta del sevidor
-                    
-                    var datos = JSON.parse(data);
-                    
-                    $("#tabla").empty();//borra la tabla
-                    $("#error").fadeOut(100, function(){
-                        
-                    if(status != 200){
-                        switch (status){
-                            case 500:
-                                alert(data);
-                                $("#error").html("error muy malo");
-                                $("#error").fadeIn(100);
-                            case 300:
-                                $("#error").html("error por todavia");
-                                $("#error").fadeIn(300);
-                        }
-                    }else{
-                       $("#tabla").append(""); 
-                    }
-                        
-                    });
-                    
-                }
-            
-            );
-        }
+
+
+function comprobarCliente(){
+    return true;    
+} 
+
+function comprobarCuenta(){
+    return true;    
+}
+   
+//ajax
+$(document).ready(function(){//cuando el documento se cargue
+    $("#botonFormu").submit(function(){//la pulsar sobre el boton
+       funcion();   
     });
-});
-     
+    
+    $("#botonFormu").click(function(){//la pulsar sobre el boton
+       funcion();  
+    });
+    
+    $("#botonFormu2").submit(function(){//la pulsar sobre el boton
+       funcion2();   
+    });
+    
+    $("#botonFormu2").click(function(){//la pulsar sobre el boton
+       funcion2();  
+    });
+    
+})   
+    function funcion(){
+        if(comprobarCliente()){//si el chequeo del cliente es correcto
+            
+            $.ajax({
+            type: 'POST',
+            url: "http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas",
+            data: $("#formulario").serialize(),
+
+            success: function(data){
+                
+                var datos = JSON.parse(data);
+                document.getElementById("cl_nom").value = datos.cl_nom;
+                document.getElementById("cl_dni").value = datos.cl_dni;
+                document.getElementById("cl_dir").value = datos.cl_dir;
+                document.getElementById("cl_tel").value = datos.cl_tel;
+                document.getElementById("cl_ema").value = datos.cl_ema;
+                document.getElementById("cl_fna").value = datos.cl_fna;
+                document.getElementById("cl_fcl").value = datos.cl_fcl;
+                document.getElementById("cl_ncu").value = datos.cl_ncu;
+                document.getElementById("cl_sal").value = datos.cl_sal;
+                
+                
+                document.getElementById("formu2").style.display = "block";         
+            },
+            error: function(xhr)
+            {//faltan diferenciar errores
+                document.getElementById("formu2").style.display = "block";
+                document.getElementById("respuesta").style.color = "red";
+                document.getElementById("respuesta").innerHTML = xhr.responseText;
+            }
+            });
+}}
+
+    function funcion2(){
+        if(comprobarCuenta()){//si el chequeo del cliente es correcto
+            
+            var continuar = confirm ("desea continuar?");
+            
+            if(continuar){
+            
+            $.ajax({
+            type: 'POST',
+            url: "http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas",
+            data: $("#formulario2").serialize(),
+
+            success: function(data){
+        
+                document.getElementById("respuesta").innerHTML = data;           
+            },
+            error: function(xhr)
+            {
+                //document.getElementById("respuesta").style.display = "block";
+                document.getElementById("respuesta").style.color = "red";
+                document.getElementById("respuesta").innerHTML = xhr.responseText;
+            }
+            });
+    } 
+}}
+

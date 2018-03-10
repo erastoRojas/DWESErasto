@@ -80,5 +80,29 @@ public class CuentasDAO
         }
         return filas;
     }
+
+    public int crearCuentaDAO(Cuenta cu) {
+    
+        DBConnection db = new DBConnection();
+        Connection con = null;
+        int filas = 0;
+        try {
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO CUENTAS (cu_ncu,cu_dn1,cu_dn2,cu_sal) "
+                                                        + "VALUES(?,?,?,?)");                                       
+            stmt.setString(1, cu.getCu_ncu());
+            stmt.setString(2, cu.getCu_dn1());
+            stmt.setString(3, cu.getCu_dn2());
+            stmt.setInt(4, cu.getCu_sal());
+            
+            filas = stmt.executeUpdate();
+            
+        } catch (Exception ex) {
+            Logger.getLogger(MovimientosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.cerrarConexion(con);
+        }
+        return filas;  
+    }
     
 }
