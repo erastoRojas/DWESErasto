@@ -27,7 +27,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-        <script src="/AplicacionBancaria/Javascript/movimientos.js"></script>
+        <script src="/AplicacionBancaria/Javascript/mostrarClientes.js"></script>
     </head>
     
             
@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-12 col-md-8 col-lg-9 headera">
                     <h1>Aplicación Bancaria</h1>
-                    <p>Conectado</p>
+                    <p>Conectado:</p>
                     <div><a href="#"><span>${nombre}</span></a></div>
                 </div> 
             </div> 
@@ -70,52 +70,80 @@
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
-                <div id="tituloMovimientos"><h1>Movimientos</h1>
-                <form id="formulario" onsubmit="return validarCliente();">
-                    <div class="col-sm-12">
-                        <div class="form-group">       
-                            <label><b>nº Cuenta:</b></label>
-                            <input type="text" id="n_cuenta" name="n_cuenta" class="form-control"/>
-                            <span id="errorCuenta" class="errorFormulario">El numero de cuenta no es correcto</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group"> 
-                            <label><b>Fecha inicio:</b></label>
-                            <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control"/>
-                            <span id="fecha1Vacia" class="errorFecha">Introduce una fecha</span>
-                            <span id="fecha1mal" class="fecha1mal">La fecha no puede ser posterior a la actual</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label><b>Fecha fin:</b></label>
-                            <input type="date" id="fecha_fin" name="fecha_fin" class="form-control"/>
-                            <span id="fecha2Vacia" class="errorFecha">Introduce una fecha</span>
-                            <span id="errorFecha" class="errorFecha">Las fechas no son correctas</span>
-                            <span id="fecha2mal" class="fecha2mal">La fecha no puede ser posterior a la actual</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-5 col-5">
-                    </div>
-                    <div class="col-sm-7 col-7">
-                        <input class="btn btn-primary" type="button" id="botonListado" name="botonListado" value="Enviar"/>
-                    </div>
-                </form>
+                <div id="tituloMovimientos"><h1>Clientes:</h1>
+                    <form id="clientes" name="clientes" value="clientes"></form>
             </div> 
+            <div class="col-sm-2"></div>
         </div><br><br>
-        <div class="col-sm-2">
-            <div id="cerrar"><a href="http://localhost:8282/AplicacionBancaria/login?op=CERRAR">Cerrar Aplicación</a></div>
-        </div>
+        
     </div> 
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8" id="contenedorTabla">
-                <table class="table table-striped" id="tabla"> 
-                </table>
+                <table class="table table-striped" id="tabla">
+                    <tr>
+                    <tbody>
+                    <th>
+                        <p>Nombre:</p>
+                    </th>
+                    <th>
+                        <p>Dni:</p>
+                    </th>
+                    <th>
+                        <p>Teléfono:</p>
+                    </th>
+                    <th>
+                        <p>Email:</p>
+                    </th>
+                    <th>
+                        <p>Nº Cuentas:</p>
+                    </th>
+                    <th>
+                        <p>Saldo:</p>
+                    </th>
+                        
+                    </tbody>
+                        
+                        
+                    </tr>    
+                    
+        <c:out value="${mensaje}"></c:out>
+        <c:forEach items="${clientes}" var="cliente">  
+            <tr>
+                
+                <td>
+                    ${cliente.cl_nom}
+                </td>
+                <td>
+                    ${cliente.cl_dni}
+                </td>
+                <td>
+                    ${cliente.cl_tel}
+                </td>
+                <td>
+                    ${cliente.cl_ema}
+                </td>
+                <td>
+                    ${cliente.cl_ncu}
+                </td>
+                <td>
+                    ${cliente.cl_sal}
+                </td>
+                
+            </tr>
+        </c:forEach>  
+        </table>
+                    
+                    
+              
                 <span id="errorServlet"></span>
             </div>
+        <div class="col-sm-2">
+                <div id="cerrar"><a href="http://localhost:8282/AplicacionBancaria/login?op=CERRAR">Cerrar Aplicación</a></div>
         </div>
-    </div>
+        </div>
+    <footer id="futer">
+        <div id="cerrar"><a href="http://localhost:8282/AplicacionBancaria/login?op=CERRAR">Cerrar Aplicación</a></div>
+    </footer>
 </body>
 </html>

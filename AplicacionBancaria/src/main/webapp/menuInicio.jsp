@@ -40,9 +40,9 @@
                 <div class="col-12 col-md-4 col-lg-3 headera">
                     <img alt="logo-boy" class="img-responsive" src="/AplicacionBancaria/img/logo-boy-2.png" id="imgInicio">
                 </div>
-                <div class="col-12 col-md-8 col-lg-9 headera">
+                <div class="col-12 col-md-8 col-lg-9 texto-header">
                     <h1>Aplicación Bancaria</h1>
-                    <p>Bienvenido</p>
+                    <p class="parrafo-header">Bienvenido</p>
                     <div><a href="#"><span>${nombre}</span></a></div>
                 </div> 
             </div> 
@@ -60,6 +60,7 @@
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/movimientos">Movimientos</a></li>
+                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/clientes">Mostrar Clientes</a></li>
                         <li><a href="#">Borrar Cuenta</a></li>
                       </ul>
                     </div>

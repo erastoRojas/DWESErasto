@@ -6,9 +6,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +20,7 @@ import servicios.IngresosYReintegrosServicios;
 
 /**
  *
- * @author Eduardo DAW
+ * @author erasto
  */
 @WebServlet(name = "IngresosYReintegrosREST", urlPatterns ={"/rest/IngresosYReintegrosREST"})
 public class IngresosYReintegrosREST extends HttpServlet

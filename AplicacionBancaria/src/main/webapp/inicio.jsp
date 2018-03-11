@@ -38,10 +38,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-4 col-lg-3 headera">
-                    <img alt="logo-boy" class="img-responsive" src="/AplicacionBancaria/img/logo-boy-2.png" id="imgInicio">
+                    <img alt="logo-boy" class="img-responsive" src="/AplicacionBancaria/img/logo-boy1.png" id="imgInicio">
                 </div>
-                <div class="col-12 col-md-8 col-lg-9 headera">
+                <div class="col-12 col-md-8 col-lg-9 texto-header">
                     <h1>Aplicación Bancaria</h1>
+                    <p class="parrafo-header" onclick="juego();">Si eres nuevo prueba suerte</p>
                 </div> 
             </div> 
         </div>
@@ -49,7 +50,7 @@
     <div class="container">
         <div class="row el-menu">
             <div class="col-12 col-md-12 mena">
-                <nav class="navbar navbar-default">
+                <nav class="navbar navbar-default menu">
                     <div class="container-fluid">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#">Home</a>
@@ -58,6 +59,7 @@
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/movimientos">Movimientos</a></li>
+                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/clientes">Mostrar Clientes</a></li>
                         <li><a href="#">Borrar Cuenta</a></li>
                       </ul>
                     </div>
@@ -70,6 +72,9 @@
                 <div class="col-12 col-md-1"></div>
                 <div class="col-12 col-md-4">
                     <form action="${pageContext.request.contextPath}/login?op=op">
+                        
+                        
+                        
                         <div class="form-group">
                             <span><h2>LOGIN</h2></span><br>
                             <label><b>Nombre:</b></label>

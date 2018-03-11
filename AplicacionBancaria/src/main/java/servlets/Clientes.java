@@ -1,17 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import com.google.gson.Gson;
+import java.io.IOException;//falta ordenar imports
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Cliente;
 import servicios.ClientesServicios;
 
 /**
@@ -20,14 +17,25 @@ import servicios.ClientesServicios;
  */
 @WebServlet(name = "Clientes", urlPatterns = {"/secure/clientes"})
 public class Clientes extends HttpServlet {
-
+    
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        ClientesServicios cs = new ClientesServicios();
+
         
-            ClientesServicios cs = new ClientesServicios();
-            
-            //request.setAttribute("clientes", cs.getAllClientes());
-            request.getRequestDispatcher("/pintarClientes.jsp").forward(request, response);
+            request.setAttribute("clientes", cs.mostrarClientes());       
+            request.getRequestDispatcher("/mostrarClientes.jsp").forward(request, response);
         }
     
 

@@ -21,7 +21,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet/less" type="text/css" href="/AplicacionBancaria/less/lessMovimientos.less" />
+        <link rel="stylesheet/less" type="text/css" href="/AplicacionBancaria/less/lessAperturaCuentas.less" />
         <!--<link rel="stylesheet" href="css/cssMovimientos.css" type="text/css">-->
         
         <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.0/less.min.js" ></script>        
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-12 col-md-8 col-lg-9 headera">
                     <h1>Aplicación Bancaria</h1>
-                    <p>Bienvenido</p>
+                    <p>Conectado</p>
                     <div><a href="#"><span>${nombre}</span></a></div>
                 </div> 
             </div> 
@@ -53,12 +53,13 @@
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="http://localhost:8080/AplicacionBancaria/menuInicio.jsp">Home</a>
+                        <a class="navbar-brand" href="http://localhost:8282/AplicacionBancaria/menuInicio.jsp">Home</a>
                     </div>                
                       <ul class="nav navbar-nav">
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
-                        <li><a href="${utils.Constantes.URLmovimientos}">Movimientos</a></li>
+                        <li><a href="${URLmovimientos}">Movimientos</a></li>
+                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/clientes">Mostrar Clientes</a></li>
                         <li><a href="#">Borrar Cuenta</a></li>
                       </ul>
                     </div>
@@ -81,6 +82,7 @@
                     </div>
                     <button id="botonFormu" type="button" class="btn btn-primary">Submit</button>
                 </form>
+                <div id="cerrar"><a href="http://localhost:8282/AplicacionBancaria/login?op=CERRAR">Cerrar Aplicación</a></div>
             </div>
             <div class="col-sm-8" style="display:none;" id="formu2">
                 <form id="formulario2" onsubmit="return comprobarCuenta();" name="formu">
@@ -156,7 +158,7 @@
         </div>
     </div> 
     <footer id="futer">
-        <div id="cerrar"><a href="http://localhost:8282/AplicacionBancaria/login?op=CERRAR">Cerrar Aplicación</a></div>
+        
     </footer>
 </body>
 </html>

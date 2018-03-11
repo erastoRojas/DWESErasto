@@ -15,7 +15,7 @@ import model.Cliente;
  */
 public class ClientesServicios {
 
-    public List<Cliente> getAllClientes() {
+    public List<Cliente> mostrarClientes() {
         ClientesDAO dao = new ClientesDAO();
         return dao.getAllClientesDBUils();
     }

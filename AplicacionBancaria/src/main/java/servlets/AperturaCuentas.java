@@ -1,21 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
-import com.google.gson.Gson;
+import com.google.gson.Gson;//falta ordenar imports
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +18,17 @@ import servicios.AperturaDeCuentasServicios;
  */
 @WebServlet(name = "AperturaCuentas", urlPatterns = {"/secure/aperturaCuentas"})
 public class AperturaCuentas extends HttpServlet {
-
+    
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -79,7 +76,7 @@ public class AperturaCuentas extends HttpServlet {
                                 String json = new Gson().toJson(cl);
                                 response.getWriter().print(json);
                             }else{
-                                //Cliente no existe
+                                //Cliente no existe pero puedes crearlo
                                 request.getSession().setAttribute("cliente",false);
                                 response.setStatus(500);
                                 response.getWriter().println("No existe el cliente");
@@ -106,14 +103,12 @@ public class AperturaCuentas extends HttpServlet {
                 Cliente cl2 = new Cliente();
                 Boolean creado = false;
                 Boolean creado2 = false;
-                int filas = 0;
+                int filas = 0;//preguntar sobre advertencia
 
                 if(n_cuenta != null){    
                     
-                    if(ac.validarCliente(n_cuenta)){
-                        
-                        
-                        
+                    if(ac.validarCliente(n_cuenta)){//valida el cliente
+
                         cuAux.setCu_ncu(n_cuenta);
                         cuAux = ac.getCuenta(cuAux);//chekea en la base de datos que la cuenta existe
 
@@ -168,7 +163,7 @@ public class AperturaCuentas extends HttpServlet {
                                                 Date date2 = new Date();
                                                 
                                                 cl2.setCl_dni(dni2);
-                                                cl2.setCl_dni("hola");
+                                                cl2.setCl_dni(dni);
                                                 cl2.setCl_nom(cl_nom2);
                                                 cl2.setCl_dir(cl_dir2);
                                                 cl2.setCl_tel(cl_tel2);
@@ -182,7 +177,6 @@ public class AperturaCuentas extends HttpServlet {
                                                 filas = ac.crearCliente(cl2);
 
                                                 if(filas > 0 ){
-
                                                     creado2 = true;
                                                 }else{
                                                     //Cliente no se ha podido crear
@@ -250,9 +244,7 @@ public class AperturaCuentas extends HttpServlet {
                 
                 break;
         }
-        
-        
-        
+
         }
               
         if(op == null){

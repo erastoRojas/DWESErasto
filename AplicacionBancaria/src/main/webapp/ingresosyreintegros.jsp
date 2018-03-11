@@ -32,7 +32,6 @@
         <script src="/AplicacionBancaria/Javascript/ingresosyreintegros.js"></script>
     </head>
     
-            
 <body>
     <div class="jumbotron jumbotron-fluid headera">
         <div class="container">
@@ -42,7 +41,7 @@
                 </div>
                 <div class="col-12 col-md-8 col-lg-9 headera">
                     <h1>Aplicación Bancaria</h1>
-                    <p>Bienvenido</p>
+                    <p>Conectado</p>
                     <div><a href="#"><span>${nombre}</span></a></div>
                 </div> 
             </div> 
@@ -60,6 +59,7 @@
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
                         <li><a href="http://localhost:8282/AplicacionBancaria/secure/movimientos">Movimientos</a></li>
+                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/clientes">Mostrar Clientes</a></li>
                         <li><a href="#">Borrar Cuenta</a></li>
                       </ul>
                     </div>
@@ -104,11 +104,10 @@
                     <input class="btn btn-primary" type="button" id="botonListado" value="Buscar"/>
                 </form>
             </div>
-               
+            <div class="col-sm-2">
+                <div id="cerrar"><a href="http://localhost:8282/AplicacionBancaria/login?op=CERRAR">Cerrar Aplicación</a></div>
+            </div>   
         </div>
     </div> 
-        <footer id="futer">
-            <div id="cerrar"><a href="http://localhost:8282/AplicacionBancaria/login?op=CERRAR">Cerrar Aplicación</a></div>
-        </footer>
     </body>
 </html>
