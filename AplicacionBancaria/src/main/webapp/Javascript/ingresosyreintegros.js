@@ -1,3 +1,9 @@
+function cargar(){
+    
+}
+
+
+
 function validarCliente(){
     var n_cuenta = document.getElementById("n_cuenta").value;
     var text_area = document.getElementById("descripcion").value;
@@ -57,13 +63,14 @@ $(document).ready(function(){//cuando el documento se cargue
             
             $.ajax({
             type: 'POST',
-            url: "http://localhost:8282/AplicacionBancaria/secure/ingresosYReintegros",
+            url: "http://localhost:8080/AplicacionBancaria/secure/ingresosYReintegros",
             data: $("#formulario").serialize(),
 
             success: function(data){
                     
                 document.getElementById("respuesta").style.color = "blue";
-                document.getElementById("respuesta").innerHTML = data;           
+                document.getElementById("respuesta").innerHTML = data;  
+                setTimeout(function(){ $("#respuesta").fadeOut("slow"); }, 3000);
             },
             error: function(xhr)
             {

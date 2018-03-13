@@ -84,7 +84,7 @@ public class Login extends HttpServlet {
                         filas = ls.crearTrabajador(tr);//llamada a servicios
 
                         if(filas > 0){
-                            request.setAttribute("error2", "Trabajador creado correctamente");
+                            request.setAttribute("mensaje", "Trabajador creado correctamente");
                         }else{
                             //No se ha podido registrar
                             response.setStatus(500);

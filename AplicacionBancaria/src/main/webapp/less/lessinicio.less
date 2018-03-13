@@ -2,10 +2,6 @@
 
 @verde: #04B404;
 
-body{
-    text-align: center;
-}
-
 .texto-header{
     text-align: left;
     padding: 10px 0 10px 0 ;
@@ -25,8 +21,6 @@ body{
     
    text-align: center;
 }
-
-
 
 .cerrar{
     button: 0px;
@@ -86,11 +80,19 @@ nav ul li a{
 #error2{
     color:red;
 }
+#mensaje{
+    color:green;
+}
 
-
-
-@media (min-width: 400px) {
-  .table-responsive {
-    display: table;
-  }
+@media (max-width: 1000px) {
+    .texto-header{
+        text-align: center;
+        padding: 10px 0 10px 0 ;
+      
+    }
+    img{
+            width: 200px;
+            display: block;
+            margin: 0 auto;
+        }
 }

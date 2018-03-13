@@ -53,13 +53,13 @@
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="http://localhost:8282/AplicacionBancaria/menuInicio.jsp">Home</a>
+                        <a class="navbar-brand" href="http://localhost:8080/AplicacionBancaria/menuInicio.jsp">Home</a>
                     </div>                
                       <ul class="nav navbar-nav">
-                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
-                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
-                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/movimientos">Movimientos</a></li>
-                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/clientes">Mostrar Clientes</a></li>
+                        <li><a href="http://localhost:8080/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
+                        <li><a href="http://localhost:8080/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
+                        <li><a href="http://localhost:8080/AplicacionBancaria/secure/movimientos">Movimientos</a></li>
+                        <li><a href="http://localhost:8080/AplicacionBancaria/secure/clientes">Mostrar Clientes</a></li>
                         <li><a href="#">Borrar Cuenta</a></li>
                       </ul>
                     </div>
@@ -68,13 +68,14 @@
         </div>
     </div>
     <div>
-        <p id="respuesta"></p>
+        
     </div>     
     <div class="container">
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8" id="ingresosYreintegros">
                 <h1>Ingresos y Reintegros</h1>
+                <p id="respuesta" onchange="cargar();"></p>
                 <form id="formulario" onsubmit="return validarCliente();">
                     <div class="col-sm-6">
                         <div class="radio">
@@ -105,7 +106,7 @@
                 </form>
             </div>
             <div class="col-sm-2">
-                <div id="cerrar"><a href="http://localhost:8282/AplicacionBancaria/login?op=CERRAR">Cerrar Aplicación</a></div>
+                <div id="cerrar"><a href="http://localhost:8080/AplicacionBancaria/login?op=CERRAR">Cerrar Aplicación</a></div>
             </div>   
         </div>
     </div> 

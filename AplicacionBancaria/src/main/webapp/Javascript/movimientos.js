@@ -71,7 +71,7 @@ function funcion(){
        
         $.ajax({
         type: 'POST',
-        url: "http://localhost:8282/AplicacionBancaria/secure/movimientos",
+        url: "http://localhost:8080/AplicacionBancaria/secure/movimientos",
         data: $("#formulario").serialize(),
         
         success: function(data){

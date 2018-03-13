@@ -56,10 +56,10 @@
                         <a class="navbar-brand" href="#">Home</a>
                     </div>
                       <ul class="nav navbar-nav">
-                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
-                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
-                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/movimientos">Movimientos</a></li>
-                        <li><a href="http://localhost:8282/AplicacionBancaria/secure/clientes">Mostrar Clientes</a></li>
+                        <li><a href="http://localhost:8080/AplicacionBancaria/secure/aperturaCuentas">Apertura Cuentas</a></li>
+                        <li><a href="http://localhost:8080/AplicacionBancaria/secure/ingresosYReintegros">Ingresos y Reintegros</a></li>
+                        <li><a href="http://localhost:8080/AplicacionBancaria/secure/movimientos">Movimientos</a></li>
+                        <li><a href="http://localhost:8080/AplicacionBancaria/secure/clientes">Mostrar Clientes</a></li>
                         <li><a href="#">Borrar Cuenta</a></li>
                       </ul>
                     </div>
@@ -106,6 +106,7 @@
                             <button class="btn btn-primary" name="op" id="op" value="REGISTRAR">Registrar</button>
                         </div>
                         <div id="error2" onchange="cargar();"><span>${error2}</span></div>
+                        <div id="mensaje" onchange="cargar();"><span>${mensaje}</span></div>
                     </form>
                 </div>
                         <div class="col-12 col-md-1"></div>

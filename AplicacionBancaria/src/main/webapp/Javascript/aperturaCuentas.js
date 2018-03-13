@@ -19,7 +19,7 @@ function comprobarCuenta(){
    
 //ajax
 $(document).ready(function(){//cuando el documento se cargue
-    $("#botonFormu").submit(function(){//la pulsar sobre el boton
+    $("#botonFormu").submit(function(){//enter
        funcion();   
     });
     
@@ -27,7 +27,7 @@ $(document).ready(function(){//cuando el documento se cargue
        funcion();  
     });
     
-    $("#botonFormu2").submit(function(){//la pulsar sobre el boton
+    $("#botonFormu2").submit(function(){//enter
        funcion2();   
     });
     
@@ -41,7 +41,7 @@ $(document).ready(function(){//cuando el documento se cargue
             
             $.ajax({
             type: 'POST',
-            url: "http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas",
+            url: "http://localhost:8080/AplicacionBancaria/secure/aperturaCuentas",
             data: $("#formulario").serialize(),
 
             success: function(data){
@@ -78,7 +78,7 @@ $(document).ready(function(){//cuando el documento se cargue
             
             $.ajax({
             type: 'POST',
-            url: "http://localhost:8282/AplicacionBancaria/secure/aperturaCuentas",
+            url: "http://localhost:8080/AplicacionBancaria/secure/aperturaCuentas",
             data: $("#formulario2").serialize(),
 
             success: function(data){

@@ -5,18 +5,18 @@ body{
 }
 
 .texto-header{
-    padding: 10px 0 10px 0 !important;
-    margin: auto !important;
+    text-align: left;
+    padding: 10px 0 10px 0 ;
     
     img{
-	//width: 200px;
+	width: 200px;
         margin: auto;
     }
 }
  
 .headera{
     padding: 10px 0 10px 0 ;
-    margin: auto; 
+    margin-bottom: 0px !important; 
     img{
 	width: 200px;
         margin: auto;
@@ -27,11 +27,6 @@ body{
 .parrafo-header{
     cursor: pointer;
     font-family: 'PT Sans Narrow', sans-serif;
-}
-
-
-.cerrar{
-    button: 0px;
 }
 
 form{
@@ -59,13 +54,13 @@ form{
 }
 
 nav ul li a{
-	color:black;
-	font-size: 20px;
-	width: 100%;
+    color:black;
+    font-size: 20px;
+    width: 100%;
 }
 
 .izquierda img{
-	width: 100%;
+    width: 100%;
 }
 
 .collapsible{
@@ -81,9 +76,16 @@ nav ul li a{
 	width: 100%;
 }
 
-
-@media (min-width: 400px) {
-  .table-responsive {
-    display: table;
-  }
+@media (max-width: 1000px) {
+    .texto-header{
+        text-align: center;
+        padding: 10px 0 10px 0 ;
+        //margin: auto; 
+        
+    }
+    img{
+            width: 200px;
+            display: block;
+            margin: 0 auto;
+        }
 }

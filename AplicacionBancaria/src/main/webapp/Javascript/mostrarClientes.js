@@ -5,7 +5,7 @@ function funcion(){
        
         $.ajax({
         type: 'POST',
-        url: "http://localhost:8282/AplicacionBancaria/secure/clientes",
+        url: "http://localhost:8080/AplicacionBancaria/secure/clientes",
         data: $("#clientes").serialize(),
         
         success: function(data){
